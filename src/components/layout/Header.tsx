@@ -49,7 +49,10 @@ export function Header() {
             <span>📧 info@ccuparty.co.ke</span>
             <span className="hidden sm:inline">📞 +254 721 280 573</span>
           </div>
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-4">
+            <p className="text-xs text-primary-foreground/80 hidden sm:block">
+              Patriotism • Democracy • Unity
+            </p>
             <Link to="/admin" className="hover:underline">Admin</Link>
           </div>
         </div>
@@ -65,11 +68,7 @@ export function Header() {
               alt="Chama Cha Uzalendo Logo" 
               className="h-14 w-auto"
             />
-            <div className="hidden sm:block">
-              <p className="text-xs text-muted-foreground">
-                Patriotism • Democracy • Unity
-              </p>
-            </div>
+            {/* Removed the tagline from here since it's now in the top bar */}
           </Link>
 
           {/* Desktop Navigation */}

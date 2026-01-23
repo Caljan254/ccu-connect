@@ -4,6 +4,9 @@ import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { Users, Briefcase, GraduationCap, Heart, Globe, Accessibility } from "lucide-react";
 
+// Import your youth image
+import YouthImage from "@/assets/CCU_Youth.png";
+
 const specialInterestGroups = [
   {
     icon: Users,
@@ -95,12 +98,12 @@ export default function Youth() {
                 <Link to="/membership">Join CCU Youth League</Link>
               </Button>
             </div>
-            <div className="bg-gradient-to-br from-primary/20 to-secondary/20 rounded-2xl aspect-square flex items-center justify-center">
-              <div className="text-center p-8">
-                <span className="text-7xl mb-4 block">🇰🇪</span>
-                <p className="font-display text-2xl font-bold">Empowering Kenya's Youth</p>
-                <p className="text-muted-foreground">For a brighter tomorrow</p>
-              </div>
+            <div className="rounded-2xl aspect-square overflow-hidden shadow-lg">
+              <img
+                src={YouthImage}
+                alt="CCU Youth Empowerment - Young Kenyans participating in leadership activities"
+                className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+              />
             </div>
           </div>
         </section>

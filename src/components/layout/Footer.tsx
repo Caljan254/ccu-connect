@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { Mail, Phone, MapPin, Facebook, Twitter, Youtube, Instagram } from "lucide-react";
-import ccuLogo from "@/assets/ccu-logo.png";
+import ccuLogo from "@/assets/ccu-logo3.png";
 
 const footerLinks = {
   party: [
@@ -54,42 +54,44 @@ export function Footer() {
 
       {/* Main Footer */}
       <div className="container mx-auto px-4 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12">
-          {/* Brand */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 items-start">
+          {/* Brand - Now properly aligned */}
           <div className="lg:col-span-2">
-            <Link to="/" className="flex items-center gap-3 mb-6">
-              <img 
-                src={ccuLogo} 
-                alt="Chama Cha Uzalendo Logo" 
-                className="h-12 w-auto"
-              />
-              <div>
-                <p className="font-display font-bold text-xl">Chama Cha Uzalendo</p>
-                <p className="text-sm text-background/70">Patriotism • Democracy • Unity</p>
+            <div className="flex flex-col h-full">
+              {/* Logo with proper vertical alignment */}
+              <div className="mb-0">
+                <Link to="/" className="inline-block">
+                  <img
+                    src={ccuLogo}
+                    alt="Chama Cha Uzalendo Logo"
+                    className="h-24 w-auto"
+                  />
+                </Link>
               </div>
-            </Link>
-            <p className="text-background/80 mb-6 max-w-sm">
-              Chama Cha Uzalendo is committed to building a just, equitable, and prosperous Kenya 
-              through patriotic leadership and inclusive governance.
-            </p>
-            <div className="flex gap-4">
-              <a href="#" className="w-10 h-10 rounded-full bg-background/10 flex items-center justify-center hover:bg-primary transition-colors">
-                <Facebook className="w-5 h-5" />
-              </a>
-              <a href="#" className="w-10 h-10 rounded-full bg-background/10 flex items-center justify-center hover:bg-primary transition-colors">
-                <Twitter className="w-5 h-5" />
-              </a>
-              <a href="#" className="w-10 h-10 rounded-full bg-background/10 flex items-center justify-center hover:bg-primary transition-colors">
-                <Youtube className="w-5 h-5" />
-              </a>
-              <a href="#" className="w-10 h-10 rounded-full bg-background/10 flex items-center justify-center hover:bg-primary transition-colors">
-                <Instagram className="w-5 h-5" />
-              </a>
+              
+              <p className="text-background/80 mb-6 max-w-sm">
+                Chama Cha Uzalendo is committed to building a just, equitable, and prosperous Kenya
+                through patriotic leadership and inclusive governance.
+              </p>
+              <div className="flex gap-4 mt-auto">
+                <a href="#" className="w-10 h-10 rounded-full bg-background/10 flex items-center justify-center hover:bg-primary transition-colors">
+                  <Facebook className="w-5 h-5" />
+                </a>
+                <a href="#" className="w-10 h-10 rounded-full bg-background/10 flex items-center justify-center hover:bg-primary transition-colors">
+                  <Twitter className="w-5 h-5" />
+                </a>
+                <a href="#" className="w-10 h-10 rounded-full bg-background/10 flex items-center justify-center hover:bg-primary transition-colors">
+                  <Youtube className="w-5 h-5" />
+                </a>
+                <a href="#" className="w-10 h-10 rounded-full bg-background/10 flex items-center justify-center hover:bg-primary transition-colors">
+                  <Instagram className="w-5 h-5" />
+                </a>
+              </div>
             </div>
           </div>
 
-          {/* Links */}
-          <div>
+          {/* Links - All columns now aligned */}
+          <div className="pt-2">
             <h3 className="font-display font-bold text-lg mb-4">The Party</h3>
             <ul className="space-y-3">
               {footerLinks.party.map((link) => (
@@ -102,7 +104,7 @@ export function Footer() {
             </ul>
           </div>
 
-          <div>
+          <div className="pt-2">
             <h3 className="font-display font-bold text-lg mb-4">Get Involved</h3>
             <ul className="space-y-3">
               {footerLinks.getInvolved.map((link) => (
@@ -115,7 +117,7 @@ export function Footer() {
             </ul>
           </div>
 
-          <div>
+          <div className="pt-2">
             <h3 className="font-display font-bold text-lg mb-4">Contact</h3>
             <ul className="space-y-3">
               <li className="flex items-start gap-3">

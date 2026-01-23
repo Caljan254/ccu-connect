@@ -2,21 +2,25 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 
+import PhilippeImage from "@/assets/Phillipe _Sadjah _SG.png";
+import JulietImage from "@/assets/Juliet _Mwaniki,_Chair.png";
+import SylvesterImage from "@/assets/Executive_C.E.O.png";
+
 const leaders = [
   {
     name: "Hon. Philippe O. G. Sadjah",
     position: "Secretary General",
-    image: null,
+    image: PhilippeImage,
   },
   {
     name: "Juliet Mwaniki",
     position: "Acting National Chairperson",
-    image: null,
+    image: JulietImage,
   },
   {
     name: "Sylvester Mutune",
-    position: "Chief Executive Officer",
-    image: null,
+    position: "Executive Director/C.E.O",
+    image: SylvesterImage,
   },
 ];
 
@@ -38,10 +42,20 @@ export function LeadershipPreview() {
               key={leader.name}
               className="bg-card rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-shadow group"
             >
-              <div className="aspect-[4/5] bg-gradient-to-br from-primary/20 to-primary/5 flex items-center justify-center">
-                <div className="w-24 h-24 rounded-full bg-primary/20 flex items-center justify-center text-primary font-display font-bold text-3xl">
-                  {leader.name.split(" ").map(n => n[0]).slice(0, 2).join("")}
-                </div>
+              <div className="aspect-[4/5] overflow-hidden">
+                {leader.image ? (
+                  <img
+                    src={leader.image}
+                    alt={`${leader.name} - ${leader.position}`}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  />
+                ) : (
+                  <div className="w-full h-full bg-gradient-to-br from-primary/20 to-primary/5 flex items-center justify-center">
+                    <div className="w-24 h-24 rounded-full bg-primary/20 flex items-center justify-center text-primary font-display font-bold text-3xl">
+                      {leader.name.split(" ").map(n => n[0]).slice(0, 2).join("")}
+                    </div>
+                  </div>
+                )}
               </div>
               <div className="p-6 text-center">
                 <h3 className="font-display font-bold text-xl mb-1">{leader.name}</h3>
