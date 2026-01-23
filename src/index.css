@@ -1,0 +1,220 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* CCU Kenya - Design System
+   Primary: Kenya Green #0d703a
+   Secondary: Kenya Red #ec1b20
+   Accent: Kenya Black with gold accents
+*/
+
+@layer base {
+  :root {
+    /* Core CCU Colors - Kenya Flag Inspired */
+    --background: 0 0% 100%;
+    --foreground: 0 0% 8%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 8%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 8%;
+
+    /* Primary - Kenya Green */
+    --primary: 147 82% 24%;
+    --primary-foreground: 0 0% 100%;
+    --primary-dark: 147 82% 18%;
+    --primary-light: 147 60% 35%;
+
+    /* Secondary - Kenya Red */
+    --secondary: 359 86% 52%;
+    --secondary-foreground: 0 0% 100%;
+
+    /* Accent - Gold */
+    --accent: 43 96% 56%;
+    --accent-foreground: 0 0% 8%;
+
+    --muted: 147 10% 96%;
+    --muted-foreground: 0 0% 40%;
+
+    --destructive: 359 86% 52%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 147 15% 88%;
+    --input: 147 15% 88%;
+    --ring: 147 82% 24%;
+
+    --radius: 0.5rem;
+
+    /* Gradients */
+    --gradient-hero: linear-gradient(135deg, hsl(147 82% 24%) 0%, hsl(147 82% 18%) 50%, hsl(0 0% 10%) 100%);
+    --gradient-cta: linear-gradient(135deg, hsl(359 86% 52%) 0%, hsl(359 86% 42%) 100%);
+    --gradient-gold: linear-gradient(135deg, hsl(43 96% 56%) 0%, hsl(43 96% 46%) 100%);
+    --gradient-kenya: linear-gradient(180deg, hsl(0 0% 10%) 0%, hsl(359 86% 52%) 33%, hsl(0 0% 100%) 50%, hsl(147 82% 24%) 67%, hsl(0 0% 10%) 100%);
+
+    /* Shadows */
+    --shadow-sm: 0 1px 2px 0 hsl(0 0% 0% / 0.05);
+    --shadow-md: 0 4px 6px -1px hsl(0 0% 0% / 0.1), 0 2px 4px -2px hsl(0 0% 0% / 0.1);
+    --shadow-lg: 0 10px 15px -3px hsl(0 0% 0% / 0.1), 0 4px 6px -4px hsl(0 0% 0% / 0.1);
+    --shadow-xl: 0 20px 25px -5px hsl(0 0% 0% / 0.1), 0 8px 10px -6px hsl(0 0% 0% / 0.1);
+    --shadow-primary: 0 10px 30px -10px hsl(147 82% 24% / 0.4);
+    --shadow-secondary: 0 10px 30px -10px hsl(359 86% 52% / 0.4);
+
+    /* Sidebar */
+    --sidebar-background: 147 10% 98%;
+    --sidebar-foreground: 0 0% 20%;
+    --sidebar-primary: 147 82% 24%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 147 15% 95%;
+    --sidebar-accent-foreground: 0 0% 20%;
+    --sidebar-border: 147 15% 90%;
+    --sidebar-ring: 147 82% 24%;
+  }
+
+  .dark {
+    --background: 0 0% 6%;
+    --foreground: 0 0% 95%;
+
+    --card: 0 0% 10%;
+    --card-foreground: 0 0% 95%;
+
+    --popover: 0 0% 10%;
+    --popover-foreground: 0 0% 95%;
+
+    --primary: 147 70% 40%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 359 80% 55%;
+    --secondary-foreground: 0 0% 100%;
+
+    --accent: 43 90% 55%;
+    --accent-foreground: 0 0% 8%;
+
+    --muted: 0 0% 15%;
+    --muted-foreground: 0 0% 60%;
+
+    --destructive: 359 80% 55%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 0 0% 20%;
+    --input: 0 0% 20%;
+    --ring: 147 70% 40%;
+
+    --sidebar-background: 0 0% 8%;
+    --sidebar-foreground: 0 0% 90%;
+    --sidebar-primary: 147 70% 40%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 0 0% 15%;
+    --sidebar-accent-foreground: 0 0% 90%;
+    --sidebar-border: 0 0% 18%;
+    --sidebar-ring: 147 70% 40%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display font-bold tracking-tight;
+  }
+}
+
+@layer components {
+  .hero-gradient {
+    background: var(--gradient-hero);
+  }
+
+  .cta-gradient {
+    background: var(--gradient-cta);
+  }
+
+  .gold-gradient {
+    background: var(--gradient-gold);
+  }
+
+  .kenya-stripe {
+    background: var(--gradient-kenya);
+  }
+
+  .text-gradient-primary {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--primary-dark)) 100%);
+  }
+
+  .shadow-primary {
+    box-shadow: var(--shadow-primary);
+  }
+
+  .shadow-secondary {
+    box-shadow: var(--shadow-secondary);
+  }
+
+  /* Pattern overlay for African styling */
+  .pattern-overlay {
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+
+  .animate-fade-up {
+    animation: fadeUp 0.6s ease-out forwards;
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 0.5s ease-out forwards;
+  }
+
+  .animate-scale-in {
+    animation: scaleIn 0.4s ease-out forwards;
+  }
+}
+
+@layer utilities {
+  .container-section {
+    @apply container mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24;
+  }
+
+  .section-title {
+    @apply text-3xl md:text-4xl lg:text-5xl font-display font-bold mb-4;
+  }
+
+  .section-subtitle {
+    @apply text-lg md:text-xl text-muted-foreground max-w-2xl;
+  }
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
