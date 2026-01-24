@@ -10,6 +10,7 @@ import Leadership from "./pages/Leadership";
 import Structure from "./pages/Structure";
 import Membership from "./pages/Membership";
 import Youth from "./pages/Youth";
+import Downloads from "./pages/MediaDownloads";
 import News from "./pages/News";
 import Events from "./pages/Events";
 import Contact from "./pages/Contact";
@@ -40,6 +41,7 @@ const App = () => (
             <Route path="/donate" element={<Donate />} />
             <Route path="/media" element={<Media />} />
             <Route path="/admin" element={<Admin />} />
+            <Route path="/downloads" element={<Downloads />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>

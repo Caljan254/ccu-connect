@@ -68,22 +68,22 @@ export function Footer() {
                   />
                 </Link>
               </div>
-              
+
               <p className="text-background/80 mb-6 max-w-sm">
                 Chama Cha Uzalendo is committed to building a just, equitable, and prosperous Kenya
                 through patriotic leadership and inclusive governance.
               </p>
               <div className="flex gap-4 mt-auto">
-                <a href="#" className="w-10 h-10 rounded-full bg-background/10 flex items-center justify-center hover:bg-primary transition-colors">
+                <a href="https://www.facebook.com/share/18AW25NKYE/" className="w-10 h-10 rounded-full bg-background/10 flex items-center justify-center hover:bg-primary transition-colors">
                   <Facebook className="w-5 h-5" />
                 </a>
-                <a href="#" className="w-10 h-10 rounded-full bg-background/10 flex items-center justify-center hover:bg-primary transition-colors">
+                <a href="https://www.instagram.com/ccuparty?igsh=MTQxaGl1amQwc2xiZw==" className="w-10 h-10 rounded-full bg-background/10 flex items-center justify-center hover:bg-primary transition-colors">
                   <Twitter className="w-5 h-5" />
                 </a>
                 <a href="#" className="w-10 h-10 rounded-full bg-background/10 flex items-center justify-center hover:bg-primary transition-colors">
                   <Youtube className="w-5 h-5" />
                 </a>
-                <a href="#" className="w-10 h-10 rounded-full bg-background/10 flex items-center justify-center hover:bg-primary transition-colors">
+                <a href="https://www.instagram.com/ccuparty?igsh=MTQxaGl1amQwc2xiZw==" className="w-10 h-10 rounded-full bg-background/10 flex items-center justify-center hover:bg-primary transition-colors">
                   <Instagram className="w-5 h-5" />
                 </a>
               </div>
