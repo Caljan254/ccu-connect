@@ -1,6 +1,6 @@
 import { Layout } from "@/components/layout/Layout";
 import { Helmet } from "react-helmet-async";
-import { Users, Building, Flag, Globe, Home, MapPin } from "lucide-react";
+import { Users, Building, Flag, Settings, Globe, Home, MapPin } from "lucide-react";
 
 const partyOrgans = [
   {
@@ -8,6 +8,19 @@ const partyOrgans = [
     name: "National Delegates Congress (NDC)",
     description: "The supreme organ of the party. It meets every 5 years to elect national officials, amend the constitution, and set party direction.",
     functions: ["Elect national leadership", "Amend party constitution", "Set strategic direction", "Approve party policies"],
+  },
+  {
+    icon: Settings,
+    name: "National Secretariat",
+    description: "Ensures efficient coordination, effective communication, and sound financial management across all party structures.",
+    functions: [
+      "Administration & Operations",
+      "Party Records & Membership management",
+      "Data coordination",
+      "Communication & Public Relations",
+      "Financial management oversight",
+      "Inter-departmental coordination"
+    ],
   },
   {
     icon: Building,
