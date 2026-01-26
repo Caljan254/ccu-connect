@@ -9,6 +9,13 @@ const partyOrgans = [
     description: "The supreme organ of the party. It meets every 5 years to elect national officials, amend the constitution, and set party direction.",
     functions: ["Elect national leadership", "Amend party constitution", "Set strategic direction", "Approve party policies"],
   },
+
+  {
+    icon: Building,
+    name: "National Executive Committee (NEC)",
+    description: "The highest decision-making body between NDC sessions. Comprises national officials and county representatives.",
+    functions: ["Implement NDC decisions", "Coordinate party activities", "Approve candidates", "Manage party resources"],
+  },
   {
     icon: Settings,
     name: "National Secretariat",
@@ -21,12 +28,6 @@ const partyOrgans = [
       "Financial management oversight",
       "Inter-departmental coordination"
     ],
-  },
-  {
-    icon: Building,
-    name: "National Executive Committee (NEC)",
-    description: "The highest decision-making body between NDC sessions. Comprises national officials and county representatives.",
-    functions: ["Implement NDC decisions", "Coordinate party activities", "Approve candidates", "Manage party resources"],
   },
   {
     icon: Flag,
