@@ -37,18 +37,18 @@ export default function About() {
             <h2 className="section-title text-center mb-8">Who We Are</h2>
             <div className="prose prose-lg max-w-none text-muted-foreground">
               <p className="text-lg leading-relaxed mb-6">
-                <strong className="text-foreground">Chama Cha Uzalendo (CCU)</strong> is a registered national political party in Kenya, 
-                founded on the principles of patriotism, democracy, and national unity. The name "Chama Cha Uzalendo" 
+                <strong className="text-foreground">Chama Cha Uzalendo (CCU)</strong> is a registered national political party in Kenya,
+                founded on the principles of patriotism, democracy, and national unity. The name "Chama Cha Uzalendo"
                 translates to "Party of Patriotism" in Swahili, reflecting our core commitment to putting Kenya first.
               </p>
               <p className="text-lg leading-relaxed mb-6">
-                We believe that every Kenyan deserves equal opportunities to thrive, regardless of their ethnic 
-                background, religious beliefs, gender, or social status. Our party provides a platform for 
+                We believe that every Kenyan deserves equal opportunities to thrive, regardless of their ethnic
+                background, religious beliefs, gender, or social status. Our party provides a platform for
                 citizens to actively participate in shaping the future of our nation through democratic processes.
               </p>
               <p className="text-lg leading-relaxed">
-                CCU has grown from a grassroots movement to a nationally recognized political force, with 
-                representation across all 47 counties and elected leaders serving in various capacities 
+                CCU has grown from a grassroots movement to a nationally recognized political force, with
+                representation across all 47 counties and elected leaders serving in various capacities
                 including Members of County Assembly (MCAs) and other public offices.
               </p>
             </div>
@@ -65,9 +65,9 @@ export default function About() {
                 </div>
                 <h3 className="font-display text-2xl font-bold mb-4">Our Vision</h3>
                 <p className="text-muted-foreground text-lg">
-                  A prosperous, just, and united Kenya where every citizen, regardless of their background, 
-                  has equal access to opportunities and can achieve their full potential. We envision a 
-                  nation free from corruption, tribalism, and inequality—a beacon of democracy in Africa.
+                  A prosperous, just, and united Kenya where every citizen, regardless of their background,
+                  has equal access to opportunities and can achieve their full potential. We envision a
+                  nation free from corruption, tribalism, and inequality, a beacon of democracy in Africa.
                 </p>
               </div>
               <div className="bg-card rounded-2xl p-8 shadow-lg border-l-4 border-secondary">
@@ -76,9 +76,9 @@ export default function About() {
                 </div>
                 <h3 className="font-display text-2xl font-bold mb-4">Our Mission</h3>
                 <p className="text-muted-foreground text-lg">
-                  To mobilize, educate, and empower Kenyans to participate actively in governance through 
-                  patriotic leadership. We are committed to fielding competent and ethical candidates, 
-                  advocating for policy reforms, and building a strong party structure that represents 
+                  To mobilize, educate, and empower Kenyans to participate actively in governance through
+                  patriotic leadership. We are committed to fielding competent and ethical candidates,
+                  advocating for policy reforms, and building a strong party structure that represents
                   the aspirations of all Kenyans.
                 </p>
               </div>
@@ -119,23 +119,23 @@ export default function About() {
               </h2>
               <div className="text-primary-foreground/90 text-lg space-y-6 text-left">
                 <p>
-                  <strong className="text-accent">Social Democracy:</strong> CCU believes in a mixed economy that 
-                  balances free market principles with strong social safety nets. We advocate for policies that 
+                  <strong className="text-accent">Social Democracy:</strong> CCU believes in a mixed economy that
+                  balances free market principles with strong social safety nets. We advocate for policies that
                   reduce inequality, provide universal access to healthcare and education, and protect workers' rights.
                 </p>
                 <p>
-                  <strong className="text-accent">Pan-Africanism:</strong> We are committed to African unity and 
-                  cooperation. We support the African Union's agenda and believe in strengthening regional 
+                  <strong className="text-accent">Pan-Africanism:</strong> We are committed to African unity and
+                  cooperation. We support the African Union's agenda and believe in strengthening regional
                   integration for the benefit of all Africans.
                 </p>
                 <p>
-                  <strong className="text-accent">Devolution:</strong> We are strong proponents of Kenya's 
-                  devolved system of government. We believe that bringing services and decision-making 
+                  <strong className="text-accent">Devolution:</strong> We are strong proponents of Kenya's
+                  devolved system of government. We believe that bringing services and decision-making
                   closer to the people is key to equitable development.
                 </p>
                 <p>
-                  <strong className="text-accent">Environmental Stewardship:</strong> We recognize the urgent 
-                  need to address climate change and environmental degradation. Our policies prioritize 
+                  <strong className="text-accent">Environmental Stewardship:</strong> We recognize the urgent
+                  need to address climate change and environmental degradation. Our policies prioritize
                   sustainable development and the protection of Kenya's natural heritage.
                 </p>
               </div>
