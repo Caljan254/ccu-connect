@@ -46,6 +46,10 @@ const mediaCategories = [
       { name: "Notices", type: "pdf", category: "documents", subcategory: "notices" },
       { name: "Election Manifesto", type: "pdf", category: "documents", subcategory: "constitution" },
       { name: "Membership Form", type: "pdf", category: "documents", subcategory: "forms" },
+      { name: "Strategic Plan", type: "pdf", category: "documents", subcategory: "constitution" },
+      { name: "Code of Conduct", type: "pdf", category: "documents", subcategory: "constitution" },
+      { name: "Disciplinary Procedure", type: "pdf", category: "documents", subcategory: "constitution" },
+      { name: "Pledge of Commitment", type: "pdf", category: "documents", subcategory: "constitution" },
     ],
   },
   {

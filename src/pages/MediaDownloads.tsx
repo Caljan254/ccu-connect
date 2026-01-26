@@ -24,6 +24,7 @@ import {
 } from "lucide-react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useState, useEffect, useRef } from "react";
+import { i } from "node_modules/vite/dist/node/types.d-aGj9QkWt";
 
 // Media Categories with subcategories
 const mediaCategories = [
@@ -184,6 +185,73 @@ const mediaDocuments = [
     subcategory: "financial-reports"
   },
 
+  {
+    id: "constitution-1",
+    title: "CCU Party Constitution 2020",
+    description: "Official party constitution document",
+    date: "2024-01-01",
+    fileUrl: "/uploads/CCU CONSTITUTION SEPT. 2020.pdf",
+    fileName: "CCU CONSTITUTION SEPT. 2020.pdf",
+    fileSize: "3.5 MB",
+    category: "documents",
+    subcategory: "financial-reports"
+  },
+  {
+    id: "constitution-2",
+    title: "CCU Manifesto",
+    description: "Official party manifesto document",
+    date: "2024-01-01",
+    fileUrl: "/uploads/CCU MANIFESTO.pdf",
+    fileName: "CCU MANIFESTO.pdf",
+    fileSize: "3.5 MB",
+    category: "documents",
+    subcategory: "constitution"
+  },
+
+  {
+    id: "constitution-3",
+    title: "CCU Pledge of Commitment",
+    description: "Official party pledge of commitment document",
+    date: "2024-01-01",
+    fileUrl: "/uploads/CCU Pledge of Commitment.pdf",
+    fileName: "CCU Pledge of Commitment.pdf",
+    fileSize: "3.5 MB",
+    category: "documents",
+    subcategory: "constitution"
+  },
+  {
+    id: "constitution-4",
+    title: "CCU Strategic Plan",
+    description: "Official party strategic plan document",
+    date: "2024-01-01",
+    fileUrl: "/uploads/CCU STRATEGIC PLAN.pdf",
+    fileName: "CCU STRATEGIC PLAN.pdf",
+    fileSize: "3.5 MB",
+    category: "documents",
+    subcategory: "constitution"
+  },
+  {
+    id: "constitution-5",
+    title: "CCU Party Electoral Code of Conduct",
+    description: "Official party electoral code of conduct document",
+    date: "2024-01-01",
+    fileUrl: "/uploads/Electoral Code of Conduct.pdf",
+    fileName: "Electoral Code of Conduct.pdf",
+    fileSize: "3.5 MB",
+    category: "documents",
+    subcategory: "constitution"
+  },
+  {
+    id: "constitution-6",
+    title: "CCU Party GUIDELINES FOR THE DISCIPLINARY PROCESS",
+    description: "Official GUIDELINES FOR THE DISCIPLINARY PROCESS OF CHAMA CHA UZALENDO (CCU) PARTY document",
+    date: "2024-01-01",
+    fileUrl: "/uploads/GUIDELINES FOR THE DISCIPLINARY PROCESS OF CHAMA CHA UZALENDO (CCU) PARTY DISCIPLINARY COMMITTEE.pdf",
+    fileName: "GUIDELINES FOR THE DISCIPLINARY PROCESS OF CHAMA CHA UZALENDO (CCU) PARTY DISCIPLINARY COMMITTEE.pdf",
+    fileSize: "3.5 MB",
+    category: "documents",
+    subcategory: "constitution"
+  },
   // MEETING NOTICES
   {
     id: "notice-1",
