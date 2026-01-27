@@ -28,10 +28,10 @@ const mediaCategories = [
       }
     ],
     items: [
-      { name: "CCU Logo (PNG)", type: "image", category: "branding", subcategory: "logos" },
-      { name: "CCU Flag (PNG)", type: "image", category: "branding", subcategory: "Flag" },
+      { name: "Party Logo (PNG)", type: "image", category: "branding", subcategory: "logos" },
+      { name: "Party Flag (PNG)", type: "image", category: "branding", subcategory: "Flag" },
       { name: "Brand Guidelines", type: "pdf", category: "branding", subcategory: "brand-guidelines" },
-      { name: "Party Colors", type: "pdf", category: "branding", subcategory: "brand-guidelines" },
+
     ],
   },
   {

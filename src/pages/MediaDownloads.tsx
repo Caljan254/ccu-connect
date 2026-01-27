@@ -86,7 +86,7 @@ const mediaDocuments = [
   // Branding Documents
   {
     id: "brand-1",
-    title: "CCU Logo (PNG)",
+    title: "Party_Logo (PNG)",
     description: "Official party logo in PNG format",
     date: "2024-01-15",
     fileUrl: "/uploads/CCU_Logo.png",
@@ -109,7 +109,7 @@ const mediaDocuments = [
   },
   {
     id: "brand-4",
-    title: "CCU_Flag(PNG)",
+    title: "Party_Flag(PNG)",
     description: "Official party flag in PNG format",
     date: "2024-01-15",
     fileUrl: "/uploads/CCU_Flag.png",
