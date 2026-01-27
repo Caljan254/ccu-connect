@@ -24,7 +24,6 @@ import {
 } from "lucide-react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useState, useEffect, useRef } from "react";
-import { i } from "node_modules/vite/dist/node/types.d-aGj9QkWt";
 
 // Media Categories with subcategories
 const mediaCategories = [
@@ -90,21 +89,36 @@ const mediaDocuments = [
     title: "CCU Logo (PNG)",
     description: "Official party logo in PNG format",
     date: "2024-01-15",
-    fileUrl: "/uploads/ccu-logo.png",
-    fileName: "ccu-logo.png",
+    fileUrl: "/uploads/CCU_Logo.png",
+    fileName: "CCU_Logo.png",
     fileSize: "2.4 MB",
-    category: "branding"
+    category: "branding",
+    subcategory: "logos"
+  },
+
+  {
+    id: "brand-3",
+    title: "Brand Guidelines",
+    description: "Complete brand style guide and usage rules",
+    date: "2024-01-15",
+    fileUrl: "/uploads/CCU_Brand_Guidelines.pdf",
+    fileName: "CCU_Brand_Guidelines.pdf",
+    fileSize: "5.6 MB",
+    category: "branding",
+    subcategory: "branding-guides"
   },
   {
-    id: "brand-2",
-    title: "CCU Logo (SVG)",
-    description: "Official party logo in vector format",
+    id: "brand-4",
+    title: "CCU_Flag(PNG)",
+    description: "Official party flag in PNG format",
     date: "2024-01-15",
-    fileUrl: "/uploads/ccu-logo.svg",
-    fileName: "ccu-logo.svg",
-    fileSize: "124 KB",
-    category: "branding"
+    fileUrl: "/uploads/CCU_Flag.png",
+    fileName: "CCU_Flag.png",
+    fileSize: "2.4 MB",
+    category: "branding",
+    subcategory: "Flag"
   },
+
 
   // FINANCIAL REPORTS
   {
@@ -185,6 +199,7 @@ const mediaDocuments = [
     subcategory: "financial-reports"
   },
 
+  // CONSTITUTION & MANIFESTO
   {
     id: "constitution-1",
     title: "CCU Party Constitution 2020",
@@ -194,7 +209,7 @@ const mediaDocuments = [
     fileName: "CCU CONSTITUTION SEPT. 2020.pdf",
     fileSize: "3.5 MB",
     category: "documents",
-    subcategory: "financial-reports"
+    subcategory: "constitution"
   },
   {
     id: "constitution-2",
@@ -207,7 +222,6 @@ const mediaDocuments = [
     category: "documents",
     subcategory: "constitution"
   },
-
   {
     id: "constitution-3",
     title: "CCU Pledge of Commitment",
@@ -252,6 +266,7 @@ const mediaDocuments = [
     category: "documents",
     subcategory: "constitution"
   },
+
   // MEETING NOTICES
   {
     id: "notice-1",
@@ -287,29 +302,29 @@ const mediaDocuments = [
     subcategory: "notices"
   },
 
-  // CONSTITUTION & MANIFESTO
-  // {
-  //   id: "constitution-1",
-  //   title: "CCU Party Constitution 2024",
-  //   description: "Official party constitution document",
-  //   date: "2024-01-01",
-  //   fileUrl: "/uploads/CCU-Constitution-2024.pdf",
-  //   fileName: "CCU-Constitution-2024.pdf",
-  //   fileSize: "5.2 MB",
-  //   category: "documents",
-  //   subcategory: "constitution"
-  // },
-  // {
-  //   id: "constitution-2",
-  //   title: "CCU Election Manifesto 2024",
-  //   description: "Party election manifesto and promises",
-  //   date: "2024-01-20",
-  //   fileUrl: "/uploads/CCU-Election-Manifesto-2024.pdf",
-  //   fileName: "CCU-Election-Manifesto-2024.pdf",
-  //   fileSize: "12.4 MB",
-  //   category: "documents",
-  //   subcategory: "constitution"
-  // },
+  // FORMS & APPLICATIONS
+  {
+    id: "form-1",
+    title: "CCU Membership Application Form",
+    description: "Official membership application form",
+    date: "2024-01-01",
+    fileUrl: "/uploads/CCU_Membership_Form.pdf",
+    fileName: "CCU_Membership_Form.pdf",
+    fileSize: "1.8 MB",
+    category: "documents",
+    subcategory: "forms"
+  },
+  {
+    id: "form-2",
+    title: "Nomination Form for Party Positions",
+    description: "Nomination form for various party leadership positions",
+    date: "2024-01-01",
+    fileUrl: "/uploads/CCU_Nomination_Form.pdf",
+    fileName: "CCU_Nomination_Form.pdf",
+    fileSize: "2.1 MB",
+    category: "documents",
+    subcategory: "forms"
+  }
 ];
 
 // Helper function to get file icon based on type
@@ -884,7 +899,7 @@ export default function Downloads() {
                                     Highlighted
                                   </span>
                                 )}
-                                {document.subcategory && (
+                                {document.subcategory && document.category === "documents" && (
                                   <span className="px-2 py-0.5 bg-blue-500/10 text-blue-500 rounded-full text-xs">
                                     {documentSubcategories.find(sub => sub.id === document.subcategory)?.title}
                                   </span>
