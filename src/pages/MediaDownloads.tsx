@@ -22,8 +22,7 @@ import {
   FileArchive,
   RefreshCw,
   Eye,
-  X,
-  AlertCircle
+  X
 } from "lucide-react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useState, useEffect, useRef } from "react";
@@ -94,26 +93,16 @@ const documentSubcategories = [
   }
 ];
 
-// Base URL for file paths - Use environment variable if available, otherwise relative path
-const BASE_PATH = import.meta.env?.VITE_BASE_URL || '';
-
-// Function to create file URL
-const getFileUrl = (filename: string) => {
-  // Remove any leading slashes from filename to avoid double slashes
-  const cleanFilename = filename.replace(/^\//, '');
-  return `${BASE_PATH}/uploads/${cleanFilename}`;
-};
-
 // Documents data with actual file paths and subcategories
 const mediaDocuments = [
   // Branding Documents
   {
     id: "brand-1",
-    title: "Party Logo (PNG)",
+    title: "Party_Logo (PNG)",
     description: "Official party logo in PNG format",
     date: "2024-01-15",
-    fileUrl: getFileUrl("CCU_Logo.png"),
-    previewUrl: getFileUrl("CCU_Logo.png"),
+    fileUrl: "/uploads/CCU_Logo.png",
+    previewUrl: "/uploads/CCU_Logo.png",
     fileName: "CCU_Logo.png",
     fileSize: "2.4 MB",
     category: "branding",
@@ -122,11 +111,11 @@ const mediaDocuments = [
   },
   {
     id: "brand-2",
-    title: "Party Logo (SVG)",
+    title: "Party_Logo (SVG)",
     description: "Official party logo in SVG vector format",
     date: "2024-01-15",
-    fileUrl: getFileUrl("CCU_Logo.svg"),
-    previewUrl: getFileUrl("CCU_Logo.svg"),
+    fileUrl: "/uploads/CCU_Logo.svg",
+    previewUrl: "/uploads/CCU_Logo.svg",
     fileName: "CCU_Logo.svg",
     fileSize: "1.2 MB",
     category: "branding",
@@ -138,8 +127,8 @@ const mediaDocuments = [
     title: "Brand Guidelines",
     description: "Complete brand style guide and usage rules",
     date: "2024-01-15",
-    fileUrl: getFileUrl("CCU_Brand_Guidelines.pdf"),
-    previewUrl: getFileUrl("CCU_Brand_Guidelines.pdf"),
+    fileUrl: "/uploads/CCU_Brand_Guidelines.pdf",
+    previewUrl: "/uploads/CCU_Brand_Guidelines.pdf",
     fileName: "CCU_Brand_Guidelines.pdf",
     fileSize: "5.6 MB",
     category: "branding",
@@ -148,11 +137,11 @@ const mediaDocuments = [
   },
   {
     id: "brand-4",
-    title: "Party Flag",
+    title: "Party_Flag",
     description: "Official party flag in PNG format",
     date: "2024-01-15",
-    fileUrl: getFileUrl("CCU_Flag.png"),
-    previewUrl: getFileUrl("CCU_Flag.png"),
+    fileUrl: "/uploads/CCU_Flag.png",
+    previewUrl: "/uploads/CCU_Flag.png",
     fileName: "CCU_Flag.png",
     fileSize: "2.4 MB",
     category: "branding",
@@ -161,11 +150,11 @@ const mediaDocuments = [
   },
   {
     id: "brand-5",
-    title: "CCU Logo Landscape",
+    title: "CCU Logo landscape",
     description: "Official landscape logo format",
     date: "2024-01-15",
-    fileUrl: getFileUrl("logo_landscape.png"),
-    previewUrl: getFileUrl("logo_landscape.png"),
+    fileUrl: "/uploads/logo_landscape.png",
+    previewUrl: "/uploads/logo_landscape.png",
     fileName: "logo_landscape.png",
     fileSize: "2.4 MB",
     category: "branding",
@@ -179,9 +168,9 @@ const mediaDocuments = [
     title: "CCU Annual Financial Reports 30 June 2024",
     description: "Annual Financial Reports for the Year Ended June 30, 2024",
     date: "2024-06-30",
-    fileUrl: getFileUrl("CCU_ANNUAL_FINANCIAL_REPORTS_30_JUNE_2024.pdf"),
-    previewUrl: getFileUrl("CCU_ANNUAL_FINANCIAL_REPORTS_30_JUNE_2024.pdf"),
-    fileName: "CCU_ANNUAL_FINANCIAL_REPORTS_30_JUNE_2024.pdf",
+    fileUrl: "/uploads/CCU_ANNUAL_FINANCIAL_REPORTS_30_JUNE_2024.pdf",
+    previewUrl: "/uploads/CCU_ANNUAL_FINANCIAL_REPORTS_30_JUNE_2024.pdf",
+    fileName: "CCU_ANNUAL_FINANCIAL_REPORTS_30_JUNE_2024",
     fileSize: "3.8 MB",
     category: "documents",
     subcategory: "financial-reports",
@@ -192,8 +181,8 @@ const mediaDocuments = [
     title: "CCU Statement of Financial Position 30 June 2024",
     description: "Statement of Financial Position for the Year Ended June 30, 2024",
     date: "2024-06-30",
-    fileUrl: getFileUrl("CCU_STATEMENT_OF_FINANCIAL_POSITION_30_JUNE_2024.pdf"),
-    previewUrl: getFileUrl("CCU_STATEMENT_OF_FINANCIAL_POSITION_30_JUNE_2024.pdf"),
+    fileUrl: "/uploads/CCU_STATEMENT_OF_FINANCIAL_POSITION_30_JUNE_2024.pdf",
+    previewUrl: "/uploads/CCU_STATEMENT_OF_FINANCIAL_POSITION_30_JUNE_2024.pdf",
     fileName: "CCU_STATEMENT_OF_FINANCIAL_POSITION_30_JUNE_2024.pdf",
     fileSize: "4.8 MB",
     category: "documents",
@@ -205,8 +194,8 @@ const mediaDocuments = [
     title: "CCU Statement of Financial Performance 30 June 2024",
     description: "Statement of Financial Performance for the Year Ended June 30, 2024",
     date: "2024-06-30",
-    fileUrl: getFileUrl("CCU_STATEMENT_OF_FINANCIAL_PERFORMANCE_30_JUNE_2024.pdf"),
-    previewUrl: getFileUrl("CCU_STATEMENT_OF_FINANCIAL_PERFORMANCE_30_JUNE_2024.pdf"),
+    fileUrl: "/uploads/CCU_STATEMENT_OF_FINANCIAL_PERFORMANCE_30_JUNE_2024.pdf",
+    previewUrl: "/uploads/CCU_STATEMENT_OF_FINANCIAL_PERFORMANCE_30_JUNE_2024.pdf",
     fileName: "CCU_STATEMENT_OF_FINANCIAL_PERFORMANCE_30_JUNE_2024.pdf",
     fileSize: "3.2 MB",
     category: "documents",
@@ -218,8 +207,8 @@ const mediaDocuments = [
     title: "CCU Statement of Financial Performance 30 June 2023",
     description: "Statement of Financial Performance for the Year Ended June 30, 2023",
     date: "2023-06-30",
-    fileUrl: getFileUrl("CCU_STATEMENT_OF_FINANCIAL_PERFORMANCE_30_JUNE_2023.pdf"),
-    previewUrl: getFileUrl("CCU_STATEMENT_OF_FINANCIAL_PERFORMANCE_30_JUNE_2023.pdf"),
+    fileUrl: "/uploads/CCU_STATEMENT_OF_FINANCIAL_PERFORMANCE_30_JUNE_2023.pdf",
+    previewUrl: "/uploads/CCU_STATEMENT_OF_FINANCIAL_PERFORMANCE_30_JUNE_2023.pdf",
     fileName: "CCU_STATEMENT_OF_FINANCIAL_PERFORMANCE_30_JUNE_2023.pdf",
     fileSize: "3.2 MB",
     category: "documents",
@@ -231,8 +220,8 @@ const mediaDocuments = [
     title: "CCU Financial Report 2019",
     description: "Financial Report for the Year 2019",
     date: "2019-12-31",
-    fileUrl: getFileUrl("CCU-2019-Financial-Report.pdf"),
-    previewUrl: getFileUrl("CCU-2019-Financial-Report.pdf"),
+    fileUrl: "/uploads/CCU-2019-Financial-Report.pdf",
+    previewUrl: "/uploads/CCU-2019-Financial-Report.pdf",
     fileName: "CCU-2019-Financial-Report.pdf",
     fileSize: "2.8 MB",
     category: "documents",
@@ -244,8 +233,8 @@ const mediaDocuments = [
     title: "CCU Financial Report 2021",
     description: "Financial Report for the Year 2021",
     date: "2021-12-31",
-    fileUrl: getFileUrl("CCU-2021-Financial-Report.pdf"),
-    previewUrl: getFileUrl("CCU-2021-Financial-Report.pdf"),
+    fileUrl: "/uploads/CCU-2021-Financial-Report.pdf",
+    previewUrl: "/uploads/CCU-2021-Financial-Report.pdf",
     fileName: "CCU-2021-Financial-Report.pdf",
     fileSize: "3.1 MB",
     category: "documents",
@@ -257,8 +246,8 @@ const mediaDocuments = [
     title: "CCU Financial Report 2022",
     description: "Financial Report for the Year 2022",
     date: "2022-12-31",
-    fileUrl: getFileUrl("CCU-2022-Financial-Report.pdf"),
-    previewUrl: getFileUrl("CCU-2022-Financial-Report.pdf"),
+    fileUrl: "/uploads/CCU-2022-Financial-Report.pdf",
+    previewUrl: "/uploads/CCU-2022-Financial-Report.pdf",
     fileName: "CCU-2022-Financial-Report.pdf",
     fileSize: "3.5 MB",
     category: "documents",
@@ -272,8 +261,8 @@ const mediaDocuments = [
     title: "CCU Party Constitution 2020",
     description: "Official party constitution document",
     date: "2024-01-01",
-    fileUrl: getFileUrl("CCU CONSTITUTION SEPT. 2020.pdf"),
-    previewUrl: getFileUrl("CCU CONSTITUTION SEPT. 2020.pdf"),
+    fileUrl: "/uploads/CCU CONSTITUTION SEPT. 2020.pdf",
+    previewUrl: "/uploads/CCU CONSTITUTION SEPT. 2020.pdf",
     fileName: "CCU CONSTITUTION SEPT. 2020.pdf",
     fileSize: "3.5 MB",
     category: "documents",
@@ -285,8 +274,8 @@ const mediaDocuments = [
     title: "CCU Manifesto",
     description: "Official party manifesto document",
     date: "2024-01-01",
-    fileUrl: getFileUrl("CCU MANIFESTO.pdf"),
-    previewUrl: getFileUrl("CCU MANIFESTO.pdf"),
+    fileUrl: "/uploads/CCU MANIFESTO.pdf",
+    previewUrl: "/uploads/CCU MANIFESTO.pdf",
     fileName: "CCU MANIFESTO.pdf",
     fileSize: "3.5 MB",
     category: "documents",
@@ -298,8 +287,8 @@ const mediaDocuments = [
     title: "CCU Pledge of Commitment",
     description: "Official party pledge of commitment document",
     date: "2024-01-01",
-    fileUrl: getFileUrl("CCU Pledge of Commitment.pdf"),
-    previewUrl: getFileUrl("CCU Pledge of Commitment.pdf"),
+    fileUrl: "/uploads/CCU Pledge of Commitment.pdf",
+    previewUrl: "/uploads/CCU Pledge of Commitment.pdf",
     fileName: "CCU Pledge of Commitment.pdf",
     fileSize: "3.5 MB",
     category: "documents",
@@ -311,8 +300,8 @@ const mediaDocuments = [
     title: "CCU Strategic Plan",
     description: "Official party strategic plan document",
     date: "2024-01-01",
-    fileUrl: getFileUrl("CCU STRATEGIC PLAN.pdf"),
-    previewUrl: getFileUrl("CCU STRATEGIC PLAN.pdf"),
+    fileUrl: "/uploads/CCU STRATEGIC PLAN.pdf",
+    previewUrl: "/uploads/CCU STRATEGIC PLAN.pdf",
     fileName: "CCU STRATEGIC PLAN.pdf",
     fileSize: "3.5 MB",
     category: "documents",
@@ -324,8 +313,8 @@ const mediaDocuments = [
     title: "CCU Party Electoral Code of Conduct",
     description: "Official party electoral code of conduct document",
     date: "2024-01-01",
-    fileUrl: getFileUrl("Electoral Code of Conduct.pdf"),
-    previewUrl: getFileUrl("Electoral Code of Conduct.pdf"),
+    fileUrl: "/uploads/Electoral Code of Conduct.pdf",
+    previewUrl: "/uploads/Electoral Code of Conduct.pdf",
     fileName: "Electoral Code of Conduct.pdf",
     fileSize: "3.5 MB",
     category: "documents",
@@ -337,8 +326,8 @@ const mediaDocuments = [
     title: "CCU Party GUIDELINES FOR THE DISCIPLINARY PROCESS",
     description: "Official GUIDELINES FOR THE DISCIPLINARY PROCESS OF CHAMA CHA UZALENDO (CCU) PARTY document",
     date: "2024-01-01",
-    fileUrl: getFileUrl("GUIDELINES FOR THE DISCIPLINARY PROCESS OF CHAMA CHA UZALENDO (CCU) PARTY DISCIPLINARY COMMITTEE.pdf"),
-    previewUrl: getFileUrl("GUIDELINES FOR THE DISCIPLINARY PROCESS OF CHAMA CHA UZALENDO (CCU) PARTY DISCIPLINARY COMMITTEE.pdf"),
+    fileUrl: "/uploads/GUIDELINES FOR THE DISCIPLINARY PROCESS OF CHAMA CHA UZALENDO (CCU) PARTY DISCIPLINARY COMMITTEE.pdf",
+    previewUrl: "/uploads/GUIDELINES FOR THE DISCIPLINARY PROCESS OF CHAMA CHA UZALENDO (CCU) PARTY DISCIPLINARY COMMITTEE.pdf",
     fileName: "GUIDELINES FOR THE DISCIPLINARY PROCESS OF CHAMA CHA UZALENDO (CCU) PARTY DISCIPLINARY COMMITTEE.pdf",
     fileSize: "3.5 MB",
     category: "documents",
@@ -352,8 +341,8 @@ const mediaDocuments = [
     title: "NEC Meeting Notice - 10 November 2023",
     description: "Notice of National Executive Committee Meeting on 10th November 2023",
     date: "2023-10-23",
-    fileUrl: getFileUrl("NOTICE-OF-A-NEC-MEETING-10-11-2023.pdf"),
-    previewUrl: getFileUrl("NOTICE-OF-A-NEC-MEETING-10-11-2023.pdf"),
+    fileUrl: "/uploads/NOTICE-OF-A-NEC-MEETING-10-11-2023.pdf",
+    previewUrl: "/uploads/NOTICE-OF-A-NEC-MEETING-10-11-2023.pdf",
     fileName: "NOTICE-OF-A-NEC-MEETING-10-11-2023.pdf",
     fileSize: "1.5 MB",
     category: "documents",
@@ -365,8 +354,8 @@ const mediaDocuments = [
     title: "NEC Meeting Notice - 12 March 2024",
     description: "Notice of National Executive Committee Meeting on 12th March 2024",
     date: "2024-02-28",
-    fileUrl: getFileUrl("NOTICE-OF-A-NEC-MEETING-12-03-2024-3.pdf"),
-    previewUrl: getFileUrl("NOTICE-OF-A-NEC-MEETING-12-03-2024-3.pdf"),
+    fileUrl: "/uploads/NOTICE-OF-A-NEC-MEETING-12-03-2024-3.pdf",
+    previewUrl: "/uploads/NOTICE-OF-A-NEC-MEETING-12-03-2024-3.pdf",
     fileName: "NOTICE-OF-A-NEC-MEETING-12-03-2024-3.pdf",
     fileSize: "1.7 MB",
     category: "documents",
@@ -378,8 +367,8 @@ const mediaDocuments = [
     title: "PMC Meeting Notice - 19 February 2024",
     description: "Notice of Party Management Committee Meeting on 19th February 2024",
     date: "2024-02-09",
-    fileUrl: getFileUrl("NOTICE-OF-A-PMC-MEETING-19-02-2024.pdf"),
-    previewUrl: getFileUrl("NOTICE-OF-A-PMC-MEETING-19-02-2024.pdf"),
+    fileUrl: "/uploads/NOTICE-OF-A-PMC-MEETING-19-02-2024.pdf",
+    previewUrl: "/uploads/NOTICE-OF-A-PMC-MEETING-19-02-2024.pdf",
     fileName: "NOTICE-OF-A-PMC-MEETING-19-02-2024.pdf",
     fileSize: "1.3 MB",
     category: "documents",
@@ -388,13 +377,14 @@ const mediaDocuments = [
   },
 
   // FORMS & APPLICATIONS
+
   {
     id: "form-1",
     title: "Nomination Form for Party Positions",
     description: "Nomination form for various party leadership positions",
     date: "2024-01-01",
-    fileUrl: getFileUrl("CCU_Nomination_Form.pdf"),
-    previewUrl: getFileUrl("CCU_Nomination_Form.pdf"),
+    fileUrl: "/uploads/CCU_Nomination_Form.pdf",
+    previewUrl: "/uploads/CCU_Nomination_Form.pdf",
     fileName: "CCU_Nomination_Form.pdf",
     fileSize: "2.1 MB",
     category: "documents",
@@ -406,8 +396,8 @@ const mediaDocuments = [
     title: "CCU Member Registration Form",
     description: "Official membership application form",
     date: "2024-01-01",
-    fileUrl: getFileUrl("CCU Member Registration Form.pdf"),
-    previewUrl: getFileUrl("CCU Member Registration Form.pdf"),
+    fileUrl: "/uploads/CCU Member Registration Form.pdf",
+    previewUrl: "/uploads/CCU Member Registration Form.pdf",
     fileName: "CCU Member Registration Form.pdf",
     fileSize: "1.8 MB",
     category: "documents",
@@ -421,8 +411,8 @@ const mediaDocuments = [
     title: "Leadership Photos Collection",
     description: "Official leadership and event photos",
     date: "2024-01-15",
-    fileUrl: getFileUrl("leadership_photos.zip"),
-    previewUrl: getFileUrl("leadership_photos_preview.jpg"), // Changed to actual preview image
+    fileUrl: "/uploads/leadership_photos.zip",
+    previewUrl: "/uploads/leadership_preview.jpg",
     fileName: "leadership_photos.zip",
     fileSize: "25.4 MB",
     category: "photos",
@@ -434,8 +424,8 @@ const mediaDocuments = [
     title: "Campaign Posters Collection",
     description: "Campaign materials and posters",
     date: "2024-01-15",
-    fileUrl: getFileUrl("campaign_posters.zip"),
-    previewUrl: getFileUrl("campaign_posters_preview.jpg"), // Changed to actual preview image
+    fileUrl: "/uploads/campaign_posters.zip",
+    previewUrl: "/uploads/campaign_preview.jpg",
     fileName: "campaign_posters.zip",
     fileSize: "18.2 MB",
     category: "photos",
@@ -449,9 +439,9 @@ const mediaDocuments = [
     title: "2024 Campaign Video",
     description: "Official campaign promotional video",
     date: "2024-01-15",
-    fileUrl: getFileUrl("CCU_Website_Banners.mp4"),
-    previewUrl: getFileUrl("CCU_Website_Banners_preview.jpg"), // Added preview image for video
-    fileName: "CCU_Website_Banners.mp4",
+    fileUrl: "/uploads/CCU Website Banners.mp4",
+    previewUrl: "/uploads/CCU Website Banners.mp4",
+    fileName: "CCU Website Banners",
     fileSize: "125.8 MB",
     category: "videos",
     subcategory: "videos",
@@ -462,8 +452,8 @@ const mediaDocuments = [
     title: "Party Anthem",
     description: "Official party anthem audio file",
     date: "2024-01-15",
-    fileUrl: getFileUrl("party_anthem.mp3"),
-    previewUrl: getFileUrl("party_anthem_preview.jpg"), // Added preview image for audio
+    fileUrl: "/uploads/party_anthem.mp3",
+    previewUrl: "/uploads/party_anthem.mp3",
     fileName: "party_anthem.mp3",
     fileSize: "5.2 MB",
     category: "videos",
@@ -500,7 +490,6 @@ const downloadFile = async (fileUrl: string, fileName: string) => {
   try {
     console.log(`Attempting to download: ${fileUrl}`);
 
-    // Try to fetch the file
     const response = await fetch(fileUrl);
 
     if (!response.ok) {
@@ -522,24 +511,26 @@ const downloadFile = async (fileUrl: string, fileName: string) => {
     window.URL.revokeObjectURL(downloadUrl);
 
     console.log(`File downloaded successfully: ${fileName}`);
+
+    setTimeout(() => {
+      window.location.reload();
+    }, 1000);
+
     return true;
 
   } catch (error) {
     console.error('Download error:', error);
 
-    // Fallback: Open in new tab
-    window.open(fileUrl, '_blank');
-    return false;
-  }
-};
-
-// Function to check if file exists
-const checkFileExists = async (url: string): Promise<boolean> => {
-  try {
-    const response = await fetch(url, { method: 'HEAD' });
-    return response.ok;
-  } catch {
-    return false;
+    if (fileUrl.endsWith('.pdf')) {
+      window.open(fileUrl, '_blank');
+      setTimeout(() => {
+        window.location.reload();
+      }, 1000);
+      return true;
+    } else {
+      alert(`Unable to download file: ${fileName}\n\nPlease try opening the link directly:\n${fileUrl}`);
+      return false;
+    }
   }
 };
 
@@ -561,34 +552,8 @@ export default function Downloads() {
   const [activeSubcategory, setActiveSubcategory] = useState<string | null>(null);
   const [previewDocument, setPreviewDocument] = useState<any>(null);
   const [showPreview, setShowPreview] = useState(false);
-  const [fileStatus, setFileStatus] = useState<Record<string, boolean>>({});
 
   const highlightedRef = useRef<HTMLDivElement>(null);
-
-  // Check file availability on component mount
-  useEffect(() => {
-    const checkFiles = async () => {
-      const status: Record<string, boolean> = {};
-
-      // Check a few key files
-      const filesToCheck = [
-        getFileUrl("CCU_Logo.png"),
-        getFileUrl("CCU_Brand_Guidelines.pdf"),
-        getFileUrl("CCU_ANNUAL_FINANCIAL_REPORTS_30_JUNE_2024.pdf"),
-        getFileUrl("CCU CONSTITUTION SEPT. 2020.pdf"),
-        getFileUrl("NOTICE-OF-A-NEC-MEETING-10-11-2023.pdf"),
-        getFileUrl("CCU_Nomination_Form.pdf"),
-      ];
-
-      for (const url of filesToCheck) {
-        status[url] = await checkFileExists(url);
-      }
-
-      setFileStatus(status);
-    };
-
-    checkFiles();
-  }, []);
 
   // Filter documents
   useEffect(() => {
@@ -741,119 +706,6 @@ export default function Downloads() {
 
   const groupedDocuments = groupDocumentsBySubcategory();
 
-  // Function to render preview content based on file type
-  const renderPreviewContent = (document: any) => {
-    if (!document) return null;
-
-    switch (document.fileType) {
-      case 'image':
-        return (
-          <div className="flex justify-center">
-            <img
-              src={document.previewUrl}
-              alt={document.title}
-              className="max-w-full max-h-[60vh] object-contain rounded-lg shadow-lg"
-              onError={(e) => {
-                (e.target as HTMLImageElement).src = "https://via.placeholder.com/600x400?text=Image+Preview+Not+Available";
-              }}
-            />
-          </div>
-        );
-
-      case 'pdf':
-        return (
-          <div className="h-[60vh] border rounded-lg overflow-hidden">
-            <iframe
-              src={document.previewUrl}
-              title={document.title}
-              className="w-full h-full"
-              onError={() => {
-                // Fallback to download link if iframe fails
-                const iframe = document.querySelector('iframe');
-                if (iframe) {
-                  iframe.outerHTML = `
-                    <div class="p-8 text-center">
-                      <AlertCircle className="w-16 h-16 text-yellow-500 mx-auto mb-4" />
-                      <h3 class="text-lg font-semibold mb-2">Preview Not Available</h3>
-                      <p class="text-muted-foreground mb-4">The PDF preview could not be loaded.</p>
-                      <Button onClick="${() => window.open(document.fileUrl, '_blank')}">
-                        Open PDF in New Tab
-                      </Button>
-                    </div>
-                  `;
-                }
-              }}
-            />
-            <p className="text-sm text-muted-foreground text-center p-2">
-              PDF preview. Some features may be limited. Download for full functionality.
-            </p>
-          </div>
-        );
-
-      case 'video':
-        return (
-          <div className="flex justify-center">
-            <video
-              controls
-              className="max-w-full max-h-[60vh] rounded-lg"
-              poster={document.previewUrl}
-            >
-              <source src={document.fileUrl} type="video/mp4" />
-              Your browser does not support the video tag.
-            </video>
-          </div>
-        );
-
-      case 'audio':
-        return (
-          <div className="flex justify-center p-8">
-            <div className="w-full max-w-md">
-              <div className="text-center mb-4">
-                <FileText className="w-12 h-12 text-primary mx-auto mb-2" />
-                <p className="text-sm text-muted-foreground">{document.description}</p>
-              </div>
-              <audio controls className="w-full">
-                <source src={document.fileUrl} type="audio/mpeg" />
-                Your browser does not support the audio element.
-              </audio>
-            </div>
-          </div>
-        );
-
-      case 'zip':
-        return (
-          <div className="text-center p-8">
-            <FileArchive className="w-20 h-20 text-yellow-500 mx-auto mb-4" />
-            <h3 className="text-lg font-semibold mb-2">{document.title}</h3>
-            <p className="text-muted-foreground mb-4">
-              {document.description}
-            </p>
-            <p className="text-sm text-muted-foreground">
-              This is a compressed archive containing multiple files.
-              Download to extract and view contents.
-            </p>
-            <p className="text-sm text-muted-foreground mt-2">
-              File size: {document.fileSize}
-            </p>
-          </div>
-        );
-
-      default:
-        return (
-          <div className="text-center p-8">
-            <File className="w-20 h-20 text-gray-500 mx-auto mb-4" />
-            <h3 className="text-lg font-semibold mb-2">{document.title}</h3>
-            <p className="text-muted-foreground mb-4">
-              {document.description}
-            </p>
-            <p className="text-sm text-muted-foreground">
-              This file type cannot be previewed directly.
-            </p>
-          </div>
-        );
-    }
-  };
-
   return (
     <>
       <Helmet>
@@ -890,7 +742,75 @@ export default function Downloads() {
             </DialogHeader>
 
             <div className="py-4">
-              {renderPreviewContent(previewDocument)}
+              {previewDocument?.fileType === 'image' && (
+                <div className="flex justify-center">
+                  <img
+                    src={previewDocument?.previewUrl}
+                    alt={previewDocument?.title}
+                    className="max-w-full max-h-[60vh] object-contain rounded-lg shadow-lg"
+                    onError={(e) => {
+                      (e.target as HTMLImageElement).src = "https://via.placeholder.com/600x400?text=Image+Preview+Not+Available";
+                    }}
+                  />
+                </div>
+              )}
+
+              {previewDocument?.fileType === 'pdf' && (
+                <div className="h-[60vh] border rounded-lg overflow-hidden">
+                  <iframe
+                    src={previewDocument?.previewUrl}
+                    title={previewDocument?.title}
+                    className="w-full h-full"
+                  />
+                  <p className="text-sm text-muted-foreground text-center p-2">
+                    PDF preview. Some features may be limited. Download for full functionality.
+                  </p>
+                </div>
+              )}
+
+              {previewDocument?.fileType === 'video' && (
+                <div className="flex justify-center">
+                  <video
+                    controls
+                    className="max-w-full max-h-[60vh] rounded-lg"
+                  >
+                    <source src={previewDocument?.previewUrl} type="video/mp4" />
+                    Your browser does not support the video tag.
+                  </video>
+                </div>
+              )}
+
+              {previewDocument?.fileType === 'audio' && (
+                <div className="flex justify-center p-8">
+                  <div className="w-full max-w-md">
+                    <div className="text-center mb-4">
+                      <FileText className="w-12 h-12 text-primary mx-auto mb-2" />
+                      <p className="text-sm text-muted-foreground">{previewDocument?.description}</p>
+                    </div>
+                    <audio controls className="w-full">
+                      <source src={previewDocument?.previewUrl} type="audio/mpeg" />
+                      Your browser does not support the audio element.
+                    </audio>
+                  </div>
+                </div>
+              )}
+
+              {previewDocument?.fileType === 'zip' && (
+                <div className="text-center p-8">
+                  <FileArchive className="w-20 h-20 text-yellow-500 mx-auto mb-4" />
+                  <h3 className="text-lg font-semibold mb-2">{previewDocument?.title}</h3>
+                  <p className="text-muted-foreground mb-4">
+                    {previewDocument?.description}
+                  </p>
+                  <p className="text-sm text-muted-foreground">
+                    This is a compressed archive containing multiple files.
+                    Download to extract and view contents.
+                  </p>
+                  <p className="text-sm text-muted-foreground mt-2">
+                    File size: {previewDocument?.fileSize}
+                  </p>
+                </div>
+              )}
             </div>
 
             <DialogFooter className="flex flex-col sm:flex-row gap-2">
@@ -944,21 +864,6 @@ export default function Downloads() {
         </section>
 
         <section className="container-section">
-          {/* File Availability Notice */}
-          {Object.keys(fileStatus).length > 0 && Object.values(fileStatus).some(status => !status) && (
-            <div className="mb-6 p-4 bg-yellow-50 border border-yellow-200 rounded-lg">
-              <div className="flex items-start gap-3">
-                <AlertCircle className="w-5 h-5 text-yellow-600 mt-0.5" />
-                <div className="flex-1">
-                  <h4 className="font-medium text-yellow-800 mb-1">Some files may not be available</h4>
-                  <p className="text-sm text-yellow-700">
-                    If you encounter issues downloading files, please check that all files are uploaded to the <code>/uploads/</code> folder on your server.
-                  </p>
-                </div>
-              </div>
-            </div>
-          )}
-
           {/* Filters */}
           <div className="mb-8 p-6 bg-muted rounded-xl">
             <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
@@ -1327,28 +1232,7 @@ export default function Downloads() {
           </div>
 
           {/* Usage Guidelines */}
-          <div className="mt-12 bg-muted rounded-2xl p-8">
-            <h3 className="font-display text-xl font-bold mb-4">Download Instructions & Preview Feature</h3>
-            <ul className="space-y-2 text-muted-foreground">
-              <li>• <span className="font-medium text-primary">Preview before downloading:</span> Click the "Preview" button to view images, PDFs, videos, and audio files</li>
-              <li>• <span className="font-medium text-primary">PDF Preview:</span> View PDF documents directly in your browser before downloading</li>
-              <li>• <span className="font-medium text-primary">Image Preview:</span> View high-quality images with zoom capability</li>
-              <li>• <span className="font-medium text-primary">Media Preview:</span> Play videos and audio files before downloading</li>
-              <li>• Click the download button to save files to your device after previewing</li>
-              <li>• PDF files require a PDF reader (Adobe Acrobat Reader recommended)</li>
-              <li>• Large files may take longer to download depending on your internet connection</li>
-              <li>• For technical issues or missing documents, contact support@ccuparty.co.ke</li>
-            </ul>
-            <div className="mt-4 p-4 bg-primary/5 rounded-lg">
-              <p className="text-sm font-medium text-primary">📸 Preview Available For:</p>
-              <div className="flex flex-wrap gap-2 mt-2">
-                <span className="px-2 py-1 bg-blue-500/10 text-blue-500 rounded text-xs">Images (PNG, JPG, SVG)</span>
-                <span className="px-2 py-1 bg-red-500/10 text-red-500 rounded text-xs">PDF Documents</span>
-                <span className="px-2 py-1 bg-purple-500/10 text-purple-500 rounded text-xs">Videos (MP4)</span>
-                <span className="px-2 py-1 bg-green-500/10 text-green-500 rounded text-xs">Audio (MP3)</span>
-              </div>
-            </div>
-          </div>
+
         </section>
       </Layout>
     </>
