@@ -7,6 +7,12 @@ import { Button } from "@/components/ui/button";
 import { Download, FileText, Image, Video, File, ArrowRight, Megaphone, BookOpen, Calculator, FileArchive } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
+// Add a helper function for file paths
+const getFilePath = (fileName: string): string => {
+  // Always use relative paths for better compatibility
+  return `uploads/${fileName}`;
+};
+
 const mediaCategories = [
   {
     id: "branding",
@@ -28,11 +34,10 @@ const mediaCategories = [
       }
     ],
     items: [
-      { name: "Party Logo ", type: "image", category: "branding", subcategory: "logos" },
-      { name: "Party Flag ", type: "image", category: "branding", subcategory: "Flag" },
-      { name: "CCU Logo landscape", type: "pdf", category: "branding", subcategory: "landscape" },
-      { name: "Brand Guidelines", type: "pdf", category: "branding", subcategory: "brand-guidelines" },
-
+      { name: "Party Logo ", type: "image", category: "branding", subcategory: "logos", fileName: "CCU_Logo.png" },
+      { name: "Party Flag ", type: "image", category: "branding", subcategory: "Flag", fileName: "CCU_Flag.png" },
+      { name: "CCU Logo landscape", type: "pdf", category: "branding", subcategory: "landscape", fileName: "logo_landscape.png" },
+      { name: "Brand Guidelines", type: "pdf", category: "branding", subcategory: "brand-guidelines", fileName: "CCU_Brand_Guidelines.pdf" },
     ],
   },
   {
@@ -40,17 +45,44 @@ const mediaCategories = [
     icon: FileText,
     title: "Party Documents",
     description: "Constitution, manifesto, and policy documents",
+    // Added subcategories for documents to match Downloads.tsx
+    subcategories: [
+      {
+        id: "financial-reports",
+        icon: Calculator,
+        title: "Financial Reports",
+        description: "Annual financial statements and reports"
+      },
+      {
+        id: "notices",
+        icon: Megaphone,
+        title: "Meeting Notices",
+        description: "NEC and PMC meeting notices"
+      },
+      {
+        id: "constitution",
+        icon: BookOpen,
+        title: "Constitution & Manifesto",
+        description: "Party constitution and election manifesto"
+      },
+      {
+        id: "forms",
+        icon: FileArchive,
+        title: "Forms & Applications",
+        description: "Membership forms and nomination applications"
+      }
+    ],
     items: [
-      { name: "Party Constitution 2024", type: "pdf", category: "documents", subcategory: "constitution" },
-      { name: "Financial Statements", type: "pdf", category: "documents", subcategory: "financial-reports" },
-      { name: "Policy Framework", type: "pdf", category: "documents", subcategory: "constitution" },
-      { name: "Notices", type: "pdf", category: "documents", subcategory: "notices" },
-      { name: "Election Manifesto", type: "pdf", category: "documents", subcategory: "constitution" },
-      { name: "Membership Form", type: "pdf", category: "documents", subcategory: "forms" },
-      { name: "Strategic Plan", type: "pdf", category: "documents", subcategory: "constitution" },
-      { name: "Code of Conduct", type: "pdf", category: "documents", subcategory: "constitution" },
-      { name: "Disciplinary Procedure", type: "pdf", category: "documents", subcategory: "constitution" },
-      { name: "Pledge of Commitment", type: "pdf", category: "documents", subcategory: "constitution" },
+      { name: "Party Constitution 2024", type: "pdf", category: "documents", subcategory: "constitution", fileName: "CCU CONSTITUTION SEPT. 2020.pdf" },
+      { name: "Financial Statements", type: "pdf", category: "documents", subcategory: "financial-reports", fileName: "CCU_ANNUAL_FINANCIAL_REPORTS_30_JUNE_2024.pdf" },
+      { name: "Policy Framework", type: "pdf", category: "documents", subcategory: "constitution", fileName: "CCU STRATEGIC PLAN.pdf" },
+      { name: "Notices", type: "pdf", category: "documents", subcategory: "notices", fileName: "NOTICE-OF-A-NEC-MEETING-12-03-2024-3.pdf" },
+      { name: "Election Manifesto", type: "pdf", category: "documents", subcategory: "constitution", fileName: "CCU MANIFESTO.pdf" },
+      { name: "Membership Form", type: "pdf", category: "documents", subcategory: "forms", fileName: "CCU Member Registration Form.pdf" },
+      { name: "Strategic Plan", type: "pdf", category: "documents", subcategory: "constitution", fileName: "CCU STRATEGIC PLAN.pdf" },
+      { name: "Code of Conduct", type: "pdf", category: "documents", subcategory: "constitution", fileName: "Electoral Code of Conduct.pdf" },
+      { name: "Disciplinary Procedure", type: "pdf", category: "documents", subcategory: "constitution", fileName: "GUIDELINES FOR THE DISCIPLINARY PROCESS OF CHAMA CHA UZALENDO (CCU) PARTY DISCIPLINARY COMMITTEE.pdf" },
+      { name: "Pledge of Commitment", type: "pdf", category: "documents", subcategory: "constitution", fileName: "CCU Pledge of Commitment.pdf" },
     ],
   },
   {
@@ -73,10 +105,10 @@ const mediaCategories = [
       }
     ],
     items: [
-      { name: "Leadership Photos", type: "zip", category: "photos", subcategory: "photos" },
-      { name: "Campaign Posters", type: "zip", category: "photos", subcategory: "graphics" },
-      { name: "Social Media Kit", type: "zip", category: "photos", subcategory: "graphics" },
-      { name: "Event Banners", type: "zip", category: "photos", subcategory: "graphics" },
+      { name: "Leadership Photos", type: "zip", category: "photos", subcategory: "photos", fileName: "leadership_photos.zip" },
+      { name: "Campaign Posters", type: "zip", category: "photos", subcategory: "graphics", fileName: "campaign_posters.zip" },
+      { name: "Social Media Kit", type: "zip", category: "photos", subcategory: "graphics", fileName: "social_media_kit.zip" },
+      { name: "Event Banners", type: "zip", category: "photos", subcategory: "graphics", fileName: "event_banners.zip" },
     ],
   },
   {
@@ -99,9 +131,9 @@ const mediaCategories = [
       }
     ],
     items: [
-      { name: "Party Anthem", type: "audio", category: "videos", subcategory: "audio" },
-      { name: "2024 Campaign Video", type: "video", category: "videos", subcategory: "videos" },
-      { name: "Leadership Speeches", type: "zip", category: "videos", subcategory: "audio" },
+      { name: "Party Anthem", type: "audio", category: "videos", subcategory: "audio", fileName: "party_anthem.mp3" },
+      { name: "2024 Campaign Video", type: "video", category: "videos", subcategory: "videos", fileName: "CCU Website Banners.mp4" },
+      { name: "Leadership Speeches", type: "zip", category: "videos", subcategory: "audio", fileName: "leadership_speeches.zip" },
     ],
   },
 ];
@@ -117,19 +149,25 @@ export default function Media() {
     }
   };
 
-  const handleItemClick = (categoryId: string, itemName: string, subcategoryId?: string) => {
-    if (subcategoryId) {
-      navigate(`/downloads?category=${categoryId}&subcategory=${subcategoryId}&highlight=${encodeURIComponent(itemName)}`);
-    } else {
-      navigate(`/downloads?category=${categoryId}&highlight=${encodeURIComponent(itemName)}`);
-    }
+  const handleItemClick = (categoryId: string, itemName: string, subcategoryId?: string, fileName?: string) => {
+    const params = new URLSearchParams();
+    params.append('category', categoryId);
+    if (subcategoryId) params.append('subcategory', subcategoryId);
+    if (itemName) params.append('highlight', encodeURIComponent(itemName));
+    if (fileName) params.append('filename', encodeURIComponent(fileName));
+
+    navigate(`/downloads?${params.toString()}`);
   };
 
   const handleAllDocumentsClick = () => {
     navigate('/downloads');
   };
 
-  const handleMockDownload = (itemName: string) => {
+  const handleMockDownload = (itemName: string, fileName?: string) => {
+    if (fileName) {
+      const filePath = getFilePath(fileName);
+      console.log(`Mock download triggered for: ${itemName} at path: ${filePath}`);
+    }
     alert(`Downloading: ${itemName}\n\nNote: This is a demo. In a real application, this would download the actual file.`);
   };
 
@@ -187,11 +225,11 @@ export default function Media() {
                   </div>
                 </div>
 
-                {/* Subcategories for Party Documents */}
-                {category.id === "documents" && category.subcategories && (
+                {/* Subcategories */}
+                {category.subcategories && category.subcategories.length > 0 && (
                   <div className="mb-8">
                     <h3 className="font-display text-lg font-semibold mb-4 text-muted-foreground">
-                      Browse by Document Type:
+                      Browse by Type:
                     </h3>
                     <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
                       {category.subcategories.map((subcategory) => (
@@ -217,9 +255,9 @@ export default function Media() {
                 <div className="grid md:grid-cols-2 gap-4">
                   {category.items.map((item) => (
                     <div
-                      key={item.name}
+                      key={`${item.name}-${item.subcategory}`}
                       className="bg-card border border-border rounded-xl p-4 flex items-center justify-between hover:border-primary/50 hover:shadow-md transition-all duration-200 cursor-pointer group/item"
-                      onClick={() => handleItemClick(category.id, item.name, item.subcategory)}
+                      onClick={() => handleItemClick(category.id, item.name, item.subcategory, item.fileName)}
                     >
                       <div className="flex items-center gap-4">
                         <div className="w-10 h-10 rounded-lg bg-muted flex items-center justify-center group-hover/item:bg-primary/10 transition-colors">
@@ -229,6 +267,11 @@ export default function Media() {
                           <p className="font-medium group-hover/item:text-primary transition-colors">
                             {item.name}
                           </p>
+                          {item.fileName && (
+                            <p className="text-xs text-muted-foreground mt-1">
+                              File: {item.fileName}
+                            </p>
+                          )}
                         </div>
                       </div>
                       <div className="flex items-center gap-2">
@@ -238,7 +281,7 @@ export default function Media() {
                           className="opacity-0 group-hover/item:opacity-100 transition-opacity"
                           onClick={(e) => {
                             e.stopPropagation();
-                            handleMockDownload(item.name);
+                            handleMockDownload(item.name, item.fileName);
                           }}
                           title={`Download ${item.name}`}
                         >
@@ -250,7 +293,7 @@ export default function Media() {
                           className="opacity-0 group-hover/item:opacity-100 transition-opacity"
                           onClick={(e) => {
                             e.stopPropagation();
-                            handleItemClick(category.id, item.name, item.subcategory);
+                            handleItemClick(category.id, item.name, item.subcategory, item.fileName);
                           }}
                           title={`View details for ${item.name}`}
                         >
@@ -299,7 +342,6 @@ export default function Media() {
               </div>
             ))}
           </div>
-
         </section>
       </Layout>
     </>
