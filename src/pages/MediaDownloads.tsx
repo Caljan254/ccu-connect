@@ -345,7 +345,41 @@ const mediaDocuments = [
     fileSize: "2.1 MB",
     category: "documents",
     subcategory: "forms"
+  },
+  {
+    id: "form-3",
+    title: "CCU Flag",
+    description: "Official party flag in PNG format",
+    date: "2024-01-15",
+    fileUrl: "/uploads/CCU_Flag.png",
+    fileName: "CCU_Flag.png",
+    fileSize: "2.4 MB",
+    category: "branding",
+    subcategory: "flag"
+  },
+  {
+    id: "form-4",
+    title: "CCU Logo (PNG)",
+    description: "Official party logo in PNG format",
+    date: "2024-01-15",
+    fileUrl: "/uploads/CCU_Logo.png",
+    fileName: "CCU_Logo.png",
+    fileSize: "2.4 MB",
+    category: "branding",
+    subcategory: "logos"
+  },
+  {
+    id: "form-5",
+    title: "CCU Logo (Landscape)",
+    description: "Official party logo in landscape orientation PNG format",
+    date: "2024-01-15",
+    fileUrl: "/uploads/logo_landscape.png",
+    fileName: "logo_landscape.png",
+    fileSize: "2.4 MB",
+    category: "branding",
+    subcategory: "landscape"
   }
+  //graphics and photos
 ];
 
 // Helper function to get file icon based on type
