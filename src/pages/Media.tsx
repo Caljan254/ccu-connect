@@ -300,16 +300,6 @@ export default function Media() {
             ))}
           </div>
 
-          {/* Usage Guidelines */}
-          <div className="mt-16 bg-muted rounded-2xl p-8">
-            <h3 className="font-display text-xl font-bold mb-4">Usage Guidelines</h3>
-            <ul className="space-y-2 text-muted-foreground">
-              <li>• All materials are property of Chama Cha Uzalendo and should be used appropriately.</li>
-              <li>• Do not modify the party logo or branding without authorization.</li>
-              <li>• Media organizations may use these materials for news coverage with proper attribution.</li>
-              <li>• For commercial use or special requests, please contact info@ccuparty.co.ke.</li>
-            </ul>
-          </div>
         </section>
       </Layout>
     </>
