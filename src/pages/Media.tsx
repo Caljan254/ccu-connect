@@ -7,9 +7,9 @@ import { Button } from "@/components/ui/button";
 import { Download, FileText, Image, Video, File, ArrowRight, Megaphone, BookOpen, Calculator, FileArchive } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
-// Add a helper function for file paths
+
 const getFilePath = (fileName: string): string => {
-  // Always use relative paths for better compatibility
+
   return `uploads/${fileName}`;
 };
 
@@ -20,18 +20,7 @@ const mediaCategories = [
     title: "Party Logo & Branding",
     description: "Official CCU logos, colors, and branding guidelines",
     subcategories: [
-      {
-        id: "logos",
-        icon: Image,
-        title: "Logos",
-        description: "Official party logos in various formats"
-      },
-      {
-        id: "brand-guidelines",
-        icon: FileText,
-        title: "Brand Guidelines",
-        description: "Brand usage and color guidelines"
-      }
+
     ],
     items: [
       { name: "Party Logo ", type: "image", category: "branding", subcategory: "logos", fileName: "CCU_Logo.png" },
@@ -45,32 +34,9 @@ const mediaCategories = [
     icon: FileText,
     title: "Party Documents",
     description: "Constitution, manifesto, and policy documents",
-    // Added subcategories for documents to match Downloads.tsx
+
     subcategories: [
-      {
-        id: "financial-reports",
-        icon: Calculator,
-        title: "Financial Reports",
-        description: "Annual financial statements and reports"
-      },
-      {
-        id: "notices",
-        icon: Megaphone,
-        title: "Meeting Notices",
-        description: "NEC and PMC meeting notices"
-      },
-      {
-        id: "constitution",
-        icon: BookOpen,
-        title: "Constitution & Manifesto",
-        description: "Party constitution and election manifesto"
-      },
-      {
-        id: "forms",
-        icon: FileArchive,
-        title: "Forms & Applications",
-        description: "Membership forms and nomination applications"
-      }
+
     ],
     items: [
       { name: "Party Constitution 2024", type: "pdf", category: "documents", subcategory: "constitution", fileName: "CCU CONSTITUTION SEPT. 2020.pdf" },
@@ -91,18 +57,7 @@ const mediaCategories = [
     title: "Photos & Graphics",
     description: "Official photos, banners, and campaign materials",
     subcategories: [
-      {
-        id: "photos",
-        icon: Image,
-        title: "Photos",
-        description: "Official leadership and event photos"
-      },
-      {
-        id: "graphics",
-        icon: Image,
-        title: "Graphics",
-        description: "Campaign materials and banners"
-      }
+
     ],
     items: [
       { name: "Leadership Photos", type: "zip", category: "photos", subcategory: "photos", fileName: "leadership_photos.zip" },
@@ -117,18 +72,7 @@ const mediaCategories = [
     title: "Videos & Audio",
     description: "Campaign videos, speeches, and audio files",
     subcategories: [
-      {
-        id: "videos",
-        icon: Video,
-        title: "Videos",
-        description: "Campaign and promotional videos"
-      },
-      {
-        id: "audio",
-        icon: Video,
-        title: "Audio",
-        description: "Speeches and party anthem"
-      }
+
     ],
     items: [
       { name: "Party Anthem", type: "audio", category: "videos", subcategory: "audio", fileName: "party_anthem.mp3" },
