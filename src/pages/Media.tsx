@@ -4,8 +4,19 @@
 import { Layout } from "@/components/layout/Layout";
 import { Helmet } from "react-helmet-async";
 import { Button } from "@/components/ui/button";
-import { Download, FileText, Image, Video, File, ArrowRight, Megaphone, BookOpen, Calculator, FileArchive } from "lucide-react";
+import { Download, FileText, Image, Video, File, ArrowRight, Megaphone, BookOpen, Calculator, FileArchive, Eye } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+
+// Add preview modal component
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
 
 const mediaCategories = [
   {
@@ -28,10 +39,42 @@ const mediaCategories = [
       }
     ],
     items: [
-      { name: "Party Logo (PNG)", type: "image", category: "branding", subcategory: "logos" },
-      { name: "Party Flag (PNG)", type: "image", category: "branding", subcategory: "Flag" },
-      { name: "Brand Guidelines", type: "pdf", category: "branding", subcategory: "brand-guidelines" },
-
+      {
+        name: "Party Logo",
+        type: "image",
+        category: "branding",
+        subcategory: "logos",
+        fileUrl: "/uploads/CCU_Logo.png",
+        previewUrl: "/uploads/CCU_Logo.png",
+        fileSize: "2.4 MB"
+      },
+      {
+        name: "Party Flag",
+        type: "image",
+        category: "branding",
+        subcategory: "Flag",
+        fileUrl: "/uploads/CCU_Flag.png",
+        previewUrl: "/uploads/CCU_Flag.png",
+        fileSize: "2.4 MB"
+      },
+      {
+        name: "CCU Logo landscape",
+        type: "image",
+        category: "branding",
+        subcategory: "landscape",
+        fileUrl: "/uploads/logo_landscape.png",
+        previewUrl: "/uploads/logo_landscape.png",
+        fileSize: "2.4 MB"
+      },
+      {
+        name: "Brand Guidelines",
+        type: "pdf",
+        category: "branding",
+        subcategory: "brand-guidelines",
+        fileUrl: "/uploads/CCU_Brand_Guidelines.pdf",
+        previewUrl: "/uploads/CCU_Brand_Guidelines.pdf",
+        fileSize: "5.6 MB"
+      },
     ],
   },
   {
@@ -40,16 +83,96 @@ const mediaCategories = [
     title: "Party Documents",
     description: "Constitution, manifesto, and policy documents",
     items: [
-      { name: "Party Constitution 2024", type: "pdf", category: "documents", subcategory: "constitution" },
-      { name: "Financial Statements", type: "pdf", category: "documents", subcategory: "financial-reports" },
-      { name: "Policy Framework", type: "pdf", category: "documents", subcategory: "constitution" },
-      { name: "Notices", type: "pdf", category: "documents", subcategory: "notices" },
-      { name: "Election Manifesto", type: "pdf", category: "documents", subcategory: "constitution" },
-      { name: "Membership Form", type: "pdf", category: "documents", subcategory: "forms" },
-      { name: "Strategic Plan", type: "pdf", category: "documents", subcategory: "constitution" },
-      { name: "Code of Conduct", type: "pdf", category: "documents", subcategory: "constitution" },
-      { name: "Disciplinary Procedure", type: "pdf", category: "documents", subcategory: "constitution" },
-      { name: "Pledge of Commitment", type: "pdf", category: "documents", subcategory: "constitution" },
+      {
+        name: "Party Constitution 2024",
+        type: "pdf",
+        category: "documents",
+        subcategory: "constitution",
+        fileUrl: "/uploads/CCU CONSTITUTION SEPT. 2020.pdf",
+        previewUrl: "/uploads/CCU CONSTITUTION SEPT. 2020.pdf",
+        fileSize: "3.5 MB"
+      },
+      {
+        name: "Financial Statements",
+        type: "pdf",
+        category: "documents",
+        subcategory: "financial-reports",
+        fileUrl: "/uploads/CCU_ANNUAL_FINANCIAL_REPORTS_30_JUNE_2024.pdf",
+        previewUrl: "/uploads/CCU_ANNUAL_FINANCIAL_REPORTS_30_JUNE_2024.pdf",
+        fileSize: "3.8 MB"
+      },
+      {
+        name: "Policy Framework",
+        type: "pdf",
+        category: "documents",
+        subcategory: "constitution",
+        fileUrl: "/uploads/CCU STRATEGIC PLAN.pdf",
+        previewUrl: "/uploads/CCU STRATEGIC PLAN.pdf",
+        fileSize: "3.5 MB"
+      },
+      {
+        name: "Notices",
+        type: "pdf",
+        category: "documents",
+        subcategory: "notices",
+        fileUrl: "/uploads/NOTICE-OF-A-NEC-MEETING-10-11-2023.pdf",
+        previewUrl: "/uploads/NOTICE-OF-A-NEC-MEETING-10-11-2023.pdf",
+        fileSize: "1.5 MB"
+      },
+      {
+        name: "Election Manifesto",
+        type: "pdf",
+        category: "documents",
+        subcategory: "constitution",
+        fileUrl: "/uploads/CCU MANIFESTO.pdf",
+        previewUrl: "/uploads/CCU MANIFESTO.pdf",
+        fileSize: "3.5 MB"
+      },
+      {
+        name: "Membership Form",
+        type: "pdf",
+        category: "documents",
+        subcategory: "forms",
+        fileUrl: "/uploads/CCU_Membership_Form.pdf",
+        previewUrl: "/uploads/CCU_Membership_Form.pdf",
+        fileSize: "1.8 MB"
+      },
+      {
+        name: "Strategic Plan",
+        type: "pdf",
+        category: "documents",
+        subcategory: "constitution",
+        fileUrl: "/uploads/CCU STRATEGIC PLAN.pdf",
+        previewUrl: "/uploads/CCU STRATEGIC PLAN.pdf",
+        fileSize: "3.5 MB"
+      },
+      {
+        name: "Code of Conduct",
+        type: "pdf",
+        category: "documents",
+        subcategory: "constitution",
+        fileUrl: "/uploads/Electoral Code of Conduct.pdf",
+        previewUrl: "/uploads/Electoral Code of Conduct.pdf",
+        fileSize: "3.5 MB"
+      },
+      {
+        name: "Disciplinary Procedure",
+        type: "pdf",
+        category: "documents",
+        subcategory: "constitution",
+        fileUrl: "/uploads/GUIDELINES FOR THE DISCIPLINARY PROCESS OF CHAMA CHA UZALENDO (CCU) PARTY DISCIPLINARY COMMITTEE.pdf",
+        previewUrl: "/uploads/GUIDELINES FOR THE DISCIPLINARY PROCESS OF CHAMA CHA UZALENDO (CCU) PARTY DISCIPLINARY COMMITTEE.pdf",
+        fileSize: "3.5 MB"
+      },
+      {
+        name: "Pledge of Commitment",
+        type: "pdf",
+        category: "documents",
+        subcategory: "constitution",
+        fileUrl: "/uploads/CCU Pledge of Commitment.pdf",
+        previewUrl: "/uploads/CCU Pledge of Commitment.pdf",
+        fileSize: "3.5 MB"
+      },
     ],
   },
   {
@@ -72,10 +195,42 @@ const mediaCategories = [
       }
     ],
     items: [
-      { name: "Leadership Photos", type: "zip", category: "photos", subcategory: "photos" },
-      { name: "Campaign Posters", type: "zip", category: "photos", subcategory: "graphics" },
-      { name: "Social Media Kit", type: "zip", category: "photos", subcategory: "graphics" },
-      { name: "Event Banners", type: "zip", category: "photos", subcategory: "graphics" },
+      {
+        name: "Leadership Photos",
+        type: "zip",
+        category: "photos",
+        subcategory: "photos",
+        fileUrl: "/uploads/leadership_photos.zip",
+        previewUrl: "/uploads/leadership_preview.jpg",
+        fileSize: "25.4 MB"
+      },
+      {
+        name: "Campaign Posters",
+        type: "zip",
+        category: "photos",
+        subcategory: "graphics",
+        fileUrl: "/uploads/campaign_posters.zip",
+        previewUrl: "/uploads/campaign_preview.jpg",
+        fileSize: "18.2 MB"
+      },
+      {
+        name: "Social Media Kit",
+        type: "zip",
+        category: "photos",
+        subcategory: "graphics",
+        fileUrl: "/uploads/social_media_kit.zip",
+        previewUrl: "/uploads/social_media_preview.jpg",
+        fileSize: "15.7 MB"
+      },
+      {
+        name: "Event Banners",
+        type: "zip",
+        category: "photos",
+        subcategory: "graphics",
+        fileUrl: "/uploads/event_banners.zip",
+        previewUrl: "/uploads/banner_preview.jpg",
+        fileSize: "22.1 MB"
+      },
     ],
   },
   {
@@ -98,15 +253,41 @@ const mediaCategories = [
       }
     ],
     items: [
-      { name: "Party Anthem", type: "audio", category: "videos", subcategory: "audio" },
-      { name: "2024 Campaign Video", type: "video", category: "videos", subcategory: "videos" },
-      { name: "Leadership Speeches", type: "zip", category: "videos", subcategory: "audio" },
+      {
+        name: "Party Anthem",
+        type: "audio",
+        category: "videos",
+        subcategory: "audio",
+        fileUrl: "/uploads/party_anthem.mp3",
+        previewUrl: "/uploads/party_anthem.mp3",
+        fileSize: "5.2 MB"
+      },
+      {
+        name: "2024 Campaign Video",
+        type: "video",
+        category: "videos",
+        subcategory: "videos",
+        fileUrl: "/uploads/campaign_video_2024.mp4",
+        previewUrl: "/uploads/campaign_video_2024.mp4",
+        fileSize: "125.8 MB"
+      },
+      {
+        name: "Leadership Speeches",
+        type: "zip",
+        category: "videos",
+        subcategory: "audio",
+        fileUrl: "/uploads/leadership_speeches.zip",
+        previewUrl: "/uploads/speeches_preview.jpg",
+        fileSize: "45.3 MB"
+      },
     ],
   },
 ];
 
 export default function Media() {
   const navigate = useNavigate();
+  const [previewItem, setPreviewItem] = useState<any>(null);
+  const [showPreview, setShowPreview] = useState(false);
 
   const handleCategoryClick = (categoryId: string, subcategoryId?: string) => {
     if (subcategoryId) {
@@ -128,8 +309,43 @@ export default function Media() {
     navigate('/downloads');
   };
 
-  const handleMockDownload = (itemName: string) => {
-    alert(`Downloading: ${itemName}\n\nNote: This is a demo. In a real application, this would download the actual file.`);
+  const handlePreview = (item: any, e: React.MouseEvent) => {
+    e.stopPropagation();
+    setPreviewItem(item);
+    setShowPreview(true);
+  };
+
+  const handleMockDownload = (item: any, e: React.MouseEvent) => {
+    e.stopPropagation();
+    alert(`Downloading: ${item.name}\n\nNote: This is a demo. In a real application, this would download the actual file.`);
+  };
+
+  const handleDownloadFromPreview = () => {
+    if (previewItem) {
+      alert(`Downloading: ${previewItem.name}\n\nNote: This is a demo. In a real application, this would download the actual file.`);
+      setShowPreview(false);
+    }
+  };
+
+  const getFileIcon = (type: string) => {
+    switch (type) {
+      case 'pdf':
+        return <FileText className="w-5 h-5 text-red-500" />;
+      case 'image':
+        return <Image className="w-5 h-5 text-blue-500" />;
+      case 'video':
+        return <Video className="w-5 h-5 text-purple-500" />;
+      case 'audio':
+        return <Video className="w-5 h-5 text-green-500" />;
+      case 'zip':
+        return <FileArchive className="w-5 h-5 text-yellow-500" />;
+      default:
+        return <File className="w-5 h-5 text-gray-500" />;
+    }
+  };
+
+  const isPreviewable = (type: string) => {
+    return ['image', 'pdf', 'video', 'audio'].includes(type);
   };
 
   return (
@@ -139,6 +355,100 @@ export default function Media() {
         <meta name="description" content="Download CCU media resources - logos, branding materials, party documents, photos, and campaign materials." />
       </Helmet>
       <Layout>
+        {/* Preview Modal */}
+        <Dialog open={showPreview} onOpenChange={setShowPreview}>
+          <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
+            <DialogHeader>
+              <DialogTitle className="text-xl">{previewItem?.name}</DialogTitle>
+              <DialogDescription>
+                Preview before download • {previewItem?.fileSize}
+              </DialogDescription>
+            </DialogHeader>
+
+            <div className="py-4">
+              {previewItem?.type === 'image' && (
+                <div className="flex justify-center">
+                  <img
+                    src={previewItem?.previewUrl}
+                    alt={previewItem?.name}
+                    className="max-w-full max-h-[60vh] object-contain rounded-lg"
+                  />
+                </div>
+              )}
+
+              {previewItem?.type === 'pdf' && (
+                <div className="h-[60vh] border rounded-lg overflow-hidden">
+                  <iframe
+                    src={previewItem?.previewUrl}
+                    title={previewItem?.name}
+                    className="w-full h-full"
+                  />
+                  <p className="text-sm text-muted-foreground text-center p-2">
+                    PDF preview. Some features may be limited. Download for full functionality.
+                  </p>
+                </div>
+              )}
+
+              {previewItem?.type === 'video' && (
+                <div className="flex justify-center">
+                  <video
+                    controls
+                    className="max-w-full max-h-[60vh] rounded-lg"
+                  >
+                    <source src={previewItem?.previewUrl} type="video/mp4" />
+                    Your browser does not support the video tag.
+                  </video>
+                </div>
+              )}
+
+              {previewItem?.type === 'audio' && (
+                <div className="flex justify-center p-8">
+                  <div className="w-full max-w-md">
+                    <div className="text-center mb-4">
+                      <FileText className="w-12 h-12 text-primary mx-auto mb-2" />
+                      <p className="text-sm text-muted-foreground">Audio File Preview</p>
+                    </div>
+                    <audio controls className="w-full">
+                      <source src={previewItem?.previewUrl} type="audio/mpeg" />
+                      Your browser does not support the audio element.
+                    </audio>
+                  </div>
+                </div>
+              )}
+
+              {previewItem?.type === 'zip' && (
+                <div className="text-center p-8">
+                  <FileArchive className="w-20 h-20 text-yellow-500 mx-auto mb-4" />
+                  <h3 className="text-lg font-semibold mb-2">Archive File</h3>
+                  <p className="text-muted-foreground mb-4">
+                    This is a compressed archive containing multiple files.
+                    Download to extract and view contents.
+                  </p>
+                  <p className="text-sm text-muted-foreground">
+                    File size: {previewItem?.fileSize}
+                  </p>
+                </div>
+              )}
+            </div>
+
+            <DialogFooter className="flex flex-col sm:flex-row gap-2">
+              <Button
+                variant="outline"
+                onClick={() => setShowPreview(false)}
+              >
+                Cancel
+              </Button>
+              <Button
+                onClick={handleDownloadFromPreview}
+                className="flex-1"
+              >
+                <Download className="mr-2 w-4 h-4" />
+                Download Now
+              </Button>
+            </DialogFooter>
+          </DialogContent>
+        </Dialog>
+
         {/* Hero */}
         <section className="bg-primary pattern-overlay py-20">
           <div className="container mx-auto px-4 text-center">
@@ -186,32 +496,6 @@ export default function Media() {
                   </div>
                 </div>
 
-                {/* Subcategories for Party Documents */}
-                {category.id === "documents" && category.subcategories && (
-                  <div className="mb-8">
-                    <h3 className="font-display text-lg font-semibold mb-4 text-muted-foreground">
-                      Browse by Document Type:
-                    </h3>
-                    <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
-                      {category.subcategories.map((subcategory) => (
-                        <div
-                          key={subcategory.id}
-                          className="bg-muted/50 border border-border rounded-xl p-4 hover:border-primary hover:bg-muted transition-all duration-200 cursor-pointer"
-                          onClick={() => handleCategoryClick(category.id, subcategory.id)}
-                        >
-                          <div className="flex items-center gap-3 mb-2">
-                            <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center">
-                              <subcategory.icon className="w-4 h-4 text-primary" />
-                            </div>
-                            <h4 className="font-medium">{subcategory.title}</h4>
-                          </div>
-                          <p className="text-sm text-muted-foreground">{subcategory.description}</p>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                )}
-
                 {/* Category Items */}
                 <div className="grid md:grid-cols-2 gap-4">
                   {category.items.map((item) => (
@@ -222,23 +506,34 @@ export default function Media() {
                     >
                       <div className="flex items-center gap-4">
                         <div className="w-10 h-10 rounded-lg bg-muted flex items-center justify-center group-hover/item:bg-primary/10 transition-colors">
-                          <File className="w-5 h-5 text-muted-foreground group-hover/item:text-primary transition-colors" />
+                          {getFileIcon(item.type)}
                         </div>
                         <div>
                           <p className="font-medium group-hover/item:text-primary transition-colors">
                             {item.name}
                           </p>
+                          <p className="text-sm text-muted-foreground">
+                            {item.fileSize} • {item.type.toUpperCase()}
+                          </p>
                         </div>
                       </div>
                       <div className="flex items-center gap-2">
+                        {isPreviewable(item.type) && (
+                          <Button
+                            variant="ghost"
+                            size="icon"
+                            className="opacity-0 group-hover/item:opacity-100 transition-opacity hover:bg-blue-500/10 hover:text-blue-500"
+                            onClick={(e) => handlePreview(item, e)}
+                            title={`Preview ${item.name}`}
+                          >
+                            <Eye className="w-5 h-5" />
+                          </Button>
+                        )}
                         <Button
                           variant="ghost"
                           size="icon"
                           className="opacity-0 group-hover/item:opacity-100 transition-opacity"
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            handleMockDownload(item.name);
-                          }}
+                          onClick={(e) => handleMockDownload(item, e)}
                           title={`Download ${item.name}`}
                         >
                           <Download className="w-5 h-5" />
@@ -308,6 +603,12 @@ export default function Media() {
               <li>• Media organizations may use these materials for news coverage with proper attribution.</li>
               <li>• For commercial use or special requests, please contact info@ccuparty.co.ke.</li>
             </ul>
+            <div className="mt-4 p-4 bg-primary/5 rounded-lg">
+              <p className="text-sm font-medium text-primary">Preview Feature Available!</p>
+              <p className="text-sm text-muted-foreground">
+                You can now preview images and documents before downloading. Look for the <Eye className="w-4 h-4 inline" /> icon.
+              </p>
+            </div>
           </div>
         </section>
       </Layout>
