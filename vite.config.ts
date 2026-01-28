@@ -5,7 +5,7 @@ import { componentTagger } from "lovable-tagger";
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
-  base: '/ccu-connect/', // Keep this for asset paths
+  base: '/ccu-connect', // Keep this for asset paths
   server: {
     host: "::",
     port: 8080,
