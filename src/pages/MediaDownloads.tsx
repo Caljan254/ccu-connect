@@ -90,12 +90,40 @@ const documentSubcategories = [
   }
 ];
 
+// Photos & Graphics subcategories
+const photosSubcategories = [
+  {
+    id: "leadership-photos",
+    icon: ImageIcon,
+    title: "Leadership Photos",
+    description: "Official photos of CCU leadership"
+  },
+  {
+    id: "campaign-materials",
+    icon: ImageIcon,
+    title: "Campaign Materials",
+    description: "Posters, banners, and campaign graphics"
+  },
+  {
+    id: "social-media",
+    icon: ImageIcon,
+    title: "Social Media Graphics",
+    description: "Ready-to-use graphics for social media"
+  },
+  {
+    id: "event-photos",
+    icon: ImageIcon,
+    title: "Event Photos",
+    description: "Photos from party events and rallies"
+  }
+];
+
 // Documents data with actual file paths and subcategories
 const mediaDocuments = [
   // Branding Documents
   {
     id: "brand-1",
-    title: "Party_Logo (PNG)",
+    title: "Party Logo (PNG)",
     description: "Official party logo in PNG format",
     date: "2024-01-15",
     fileUrl: "/uploads/CCU_Logo.png",
@@ -104,12 +132,10 @@ const mediaDocuments = [
     category: "branding",
     subcategory: "logos"
   },
-
-
   {
-    id: "brand-3",
-    title: "logo_landscape ",
-    description: "Official party logo in PNG format",
+    id: "brand-2",
+    title: "Logo Landscape",
+    description: "Official party logo in landscape orientation",
     date: "2024-01-15",
     fileUrl: "/uploads/logo_landscape.png",
     fileName: "logo_landscape.png",
@@ -118,19 +144,19 @@ const mediaDocuments = [
     subcategory: "landscape"
   },
   {
-    id: "brand-4",
+    id: "brand-3",
     title: "Brand Guidelines",
     description: "Complete brand style guide and usage rules",
     date: "2024-01-15",
-    fileUrl: "/uploads/CCU_Brand_Guidelines.pdf",
-    fileName: "CCU_Brand_Guidelines.pdf",
+    fileUrl: "/uploads/CCU Brand Guide.png",
+    fileName: "CCU Brand Guide.png",
     fileSize: "5.6 MB",
     category: "branding",
-    subcategory: "branding-guides"
+    subcategory: "Brand guidelines"
   },
   {
-    id: "brand-5",
-    title: "Party_Flag(PNG)",
+    id: "brand-4",
+    title: "Party Flag (PNG)",
     description: "Official party flag in PNG format",
     date: "2024-01-15",
     fileUrl: "/uploads/CCU_Flag.png",
@@ -140,8 +166,191 @@ const mediaDocuments = [
     subcategory: "Flag"
   },
 
+  // Photos & Graphics - Leadership Photos
+  {
+    id: "photo-1",
+    title: "Leadership Portrait - Chairman",
+    description: "Official portrait of the Party Chairman",
+    date: "2024-03-15",
+    fileUrl: "/uploads/leadership/chairman_portrait.jpg",
+    fileName: "chairman_portrait.jpg",
+    fileSize: "3.2 MB",
+    category: "photos",
+    subcategory: "leadership-photos"
+  },
+  {
+    id: "photo-2",
+    title: "Leadership Team Photo",
+    description: "Group photo of the National Executive Committee",
+    date: "2024-02-20",
+    fileUrl: "/uploads/leadership/nec_group_photo.jpg",
+    fileName: "nec_group_photo.jpg",
+    fileSize: "4.1 MB",
+    category: "photos",
+    subcategory: "leadership-photos"
+  },
+  {
+    id: "photo-3",
+    title: "Secretary General Official Photo",
+    description: "Official photo of the Secretary General",
+    date: "2024-03-10",
+    fileUrl: "/uploads/leadership/secretary_general.jpg",
+    fileName: "secretary_general.jpg",
+    fileSize: "2.8 MB",
+    category: "photos",
+    subcategory: "leadership-photos"
+  },
+  {
+    id: "photo-4",
+    title: "Treasurer Official Portrait",
+    description: "Official portrait of the National Treasurer",
+    date: "2024-03-12",
+    fileUrl: "/uploads/leadership/treasurer_portrait.jpg",
+    fileName: "treasurer_portrait.jpg",
+    fileSize: "3.1 MB",
+    category: "photos",
+    subcategory: "leadership-photos"
+  },
 
-  // FINANCIAL REPORTS
+  // Photos & Graphics
+  {
+    id: "graphic-1",
+    title: "Campaign Poster 2024",
+    description: "Official campaign poster design for 2024 elections",
+    date: "2024-01-20",
+    fileUrl: "/uploads/campaign/campaign_poster_2024.jpg",
+    fileName: "campaign_poster_2024.jpg",
+    fileSize: "5.2 MB",
+    category: "photos",
+    subcategory: "campaign-materials"
+  },
+  {
+    id: "graphic-2",
+    title: "Election Banner Design",
+    description: "Banner design for election campaigns",
+    date: "2024-01-25",
+    fileUrl: "/uploads/CCU Website Banner.png",
+    fileName: "CCU Website Banner.png",
+    fileSize: "4.8 MB",
+    category: "photos",
+    subcategory: "campaign-materials"
+  },
+  {
+    id: "graphic-3",
+    title: "Campaign Flyer Template",
+    description: "Printable campaign flyer template",
+    date: "2024-02-10",
+    fileUrl: "/uploads/campaign/campaign_flyer_template.jpg",
+    fileName: "campaign_flyer_template.jpg",
+    fileSize: "3.5 MB",
+    category: "photos",
+    subcategory: "campaign-materials"
+  },
+  {
+    id: "graphic-4",
+    title: "Car Sticker Design",
+    description: "Design for vehicle campaign stickers",
+    date: "2024-02-15",
+    fileUrl: "/uploads/campaign/car_sticker_design.jpg",
+    fileName: "car_sticker_design.jpg",
+    fileSize: "2.9 MB",
+    category: "photos",
+    subcategory: "campaign-materials"
+  },
+
+  // Photos & Graphics - Social Media
+  {
+    id: "social-1",
+    title: "Facebook Cover Photo",
+    description: "Official CCU cover photo for Facebook",
+    date: "2024-01-30",
+    fileUrl: "/uploads/CCU_Facebook_Cover_2025.png",
+    fileName: "CCU_Facebook_Cover_2025.png",
+    fileSize: "2.7 MB",
+    category: "photos",
+    subcategory: "social-media"
+  },
+  {
+    id: "social-2",
+    title: "Twitter Header Image",
+    description: "Header image for Twitter/X profile",
+    date: "2024-01-30",
+    fileUrl: "/uploads/social/twitter_header.jpg",
+    fileName: "twitter_header.jpg",
+    fileSize: "2.5 MB",
+    category: "photos",
+    subcategory: "social-media"
+  },
+  {
+    id: "social-3",
+    title: "Instagram Story Template",
+    description: "Template for Instagram stories",
+    date: "2024-02-05",
+    fileUrl: "/uploads/social/instagram_story_template.jpg",
+    fileName: "instagram_story_template.jpg",
+    fileSize: "3.3 MB",
+    category: "photos",
+    subcategory: "social-media"
+  },
+  {
+    id: "social-4",
+    title: "WhatsApp Status Graphics",
+    description: "Graphics for WhatsApp status updates",
+    date: "2024-02-08",
+    fileUrl: "/uploads/social/whatsapp_status_graphics.jpg",
+    fileName: "whatsapp_status_graphics.jpg",
+    fileSize: "2.4 MB",
+    category: "photos",
+    subcategory: "social-media"
+  },
+
+  // Photos & Graphics - Event Photos
+  {
+    id: "event-1",
+    title: "Launch Event Gallery",
+    description: "Photos from the party launch event",
+    date: "2024-01-10",
+    fileUrl: "/uploads/events/launch_event_1.jpg",
+    fileName: "launch_event_1.jpg",
+    fileSize: "4.5 MB",
+    category: "photos",
+    subcategory: "event-photos"
+  },
+  {
+    id: "event-2",
+    title: "Rally Photos - Nairobi",
+    description: "Photos from the Nairobi campaign rally",
+    date: "2024-02-28",
+    fileUrl: "/uploads/events/nairobi_rally_1.jpg",
+    fileName: "nairobi_rally_1.jpg",
+    fileSize: "4.2 MB",
+    category: "photos",
+    subcategory: "event-photos"
+  },
+  {
+    id: "event-3",
+    title: "Meeting with Supporters",
+    description: "Photos from meeting with party supporters",
+    date: "2024-03-05",
+    fileUrl: "/uploads/events/supporters_meeting.jpg",
+    fileName: "supporters_meeting.jpg",
+    fileSize: "3.8 MB",
+    category: "photos",
+    subcategory: "event-photos"
+  },
+  {
+    id: "event-4",
+    title: "Youth Wing Event",
+    description: "Photos from youth wing engagement event",
+    date: "2024-03-18",
+    fileUrl: "/uploads/events/youth_event.jpg",
+    fileName: "youth_event.jpg",
+    fileSize: "4.0 MB",
+    category: "photos",
+    subcategory: "event-photos"
+  },
+
+  // FINANCIAL REPORTS 
   {
     id: "financial-1",
     title: "CCU Annual Financial Reports 30 June 2024",
@@ -175,52 +384,8 @@ const mediaDocuments = [
     category: "documents",
     subcategory: "financial-reports"
   },
-  {
-    id: "financial-4",
-    title: "CCU Statement of Financial Performance 30 June 2023",
-    description: "Statement of Financial Performance for the Year Ended June 30, 2023",
-    date: "2023-06-30",
-    fileUrl: "/uploads/CCU_STATEMENT_OF_FINANCIAL_PERFORMANCE_30_JUNE_2023.pdf",
-    fileName: "CCU_STATEMENT_OF_FINANCIAL_PERFORMANCE_30_JUNE_2023.pdf",
-    fileSize: "3.2 MB",
-    category: "documents",
-    subcategory: "financial-reports"
-  },
-  {
-    id: "financial-5",
-    title: "CCU Financial Report 2019",
-    description: "Financial Report for the Year 2019",
-    date: "2019-12-31",
-    fileUrl: "/uploads/CCU-2019-Financial-Report.pdf",
-    fileName: "CCU-2019-Financial-Report.pdf",
-    fileSize: "2.8 MB",
-    category: "documents",
-    subcategory: "financial-reports"
-  },
-  {
-    id: "financial-6",
-    title: "CCU Financial Report 2021",
-    description: "Financial Report for the Year 2021",
-    date: "2021-12-31",
-    fileUrl: "/uploads/CCU-2021-Financial-Report.pdf",
-    fileName: "CCU-2021-Financial-Report.pdf",
-    fileSize: "3.1 MB",
-    category: "documents",
-    subcategory: "financial-reports"
-  },
-  {
-    id: "financial-7",
-    title: "CCU Financial Report 2022",
-    description: "Financial Report for the Year 2022",
-    date: "2022-12-31",
-    fileUrl: "/uploads/CCU-2022-Financial-Report.pdf",
-    fileName: "CCU-2022-Financial-Report.pdf",
-    fileSize: "3.5 MB",
-    category: "documents",
-    subcategory: "financial-reports"
-  },
 
-  // CONSTITUTION & MANIFESTO
+  // CONSTITUTION & MANIFESTO (kept as before)
   {
     id: "constitution-1",
     title: "CCU Party Constitution 2020",
@@ -243,52 +408,8 @@ const mediaDocuments = [
     category: "documents",
     subcategory: "constitution"
   },
-  {
-    id: "constitution-3",
-    title: "CCU Pledge of Commitment",
-    description: "Official party pledge of commitment document",
-    date: "2024-01-01",
-    fileUrl: "/uploads/CCU Pledge of Commitment.pdf",
-    fileName: "CCU Pledge of Commitment.pdf",
-    fileSize: "3.5 MB",
-    category: "documents",
-    subcategory: "constitution"
-  },
-  {
-    id: "constitution-4",
-    title: "CCU Strategic Plan",
-    description: "Official party strategic plan document",
-    date: "2024-01-01",
-    fileUrl: "/uploads/CCU STRATEGIC PLAN.pdf",
-    fileName: "CCU STRATEGIC PLAN.pdf",
-    fileSize: "3.5 MB",
-    category: "documents",
-    subcategory: "constitution"
-  },
-  {
-    id: "constitution-5",
-    title: "CCU Party Electoral Code of Conduct",
-    description: "Official party electoral code of conduct document",
-    date: "2024-01-01",
-    fileUrl: "/uploads/Electoral Code of Conduct.pdf",
-    fileName: "Electoral Code of Conduct.pdf",
-    fileSize: "3.5 MB",
-    category: "documents",
-    subcategory: "constitution"
-  },
-  {
-    id: "constitution-6",
-    title: "CCU Party GUIDELINES FOR THE DISCIPLINARY PROCESS",
-    description: "Official GUIDELINES FOR THE DISCIPLINARY PROCESS OF CHAMA CHA UZALENDO (CCU) PARTY document",
-    date: "2024-01-01",
-    fileUrl: "/uploads/GUIDELINES FOR THE DISCIPLINARY PROCESS OF CHAMA CHA UZALENDO (CCU) PARTY DISCIPLINARY COMMITTEE.pdf",
-    fileName: "GUIDELINES FOR THE DISCIPLINARY PROCESS OF CHAMA CHA UZALENDO (CCU) PARTY DISCIPLINARY COMMITTEE.pdf",
-    fileSize: "3.5 MB",
-    category: "documents",
-    subcategory: "constitution"
-  },
 
-  // MEETING NOTICES
+  // MEETING NOTICES (kept as before)
   {
     id: "notice-1",
     title: "NEC Meeting Notice - 10 November 2023",
@@ -300,32 +421,22 @@ const mediaDocuments = [
     category: "documents",
     subcategory: "notices"
   },
-  {
-    id: "notice-2",
-    title: "NEC Meeting Notice - 12 March 2024",
-    description: "Notice of National Executive Committee Meeting on 12th March 2024",
-    date: "2024-02-28",
-    fileUrl: "/uploads/NOTICE-OF-A-NEC-MEETING-12-03-2024-3.pdf",
-    fileName: "NOTICE-OF-A-NEC-MEETING-12-03-2024-3.pdf",
-    fileSize: "1.7 MB",
-    category: "documents",
-    subcategory: "notices"
-  },
-  {
-    id: "notice-3",
-    title: "PMC Meeting Notice - 19 February 2024",
-    description: "Notice of Party Management Committee Meeting on 19th February 2024",
-    date: "2024-02-09",
-    fileUrl: "/uploads/NOTICE-OF-A-PMC-MEETING-19-02-2024.pdf",
-    fileName: "NOTICE-OF-A-PMC-MEETING-19-02-2024.pdf",
-    fileSize: "1.3 MB",
-    category: "documents",
-    subcategory: "notices"
-  },
 
-  // FORMS & APPLICATIONS
+  // FORMS & APPLICATIONS (kept as before)
+
   {
     id: "form-1",
+    title: "CU Member Registration Form",
+    description: "CU Member Registration Form",
+    date: "2024-01-01",
+    fileUrl: "/uploads/CCU Member Registration Form.pdf",
+    fileName: "CCU Member Registration Form.pdf",
+    fileSize: "2.1 MB",
+    category: "documents",
+    subcategory: "forms"
+  },
+  {
+    id: "form-2",
     title: "CCU Membership Application Form",
     description: "Official membership application form",
     date: "2024-01-01",
@@ -335,51 +446,6 @@ const mediaDocuments = [
     category: "documents",
     subcategory: "forms"
   },
-  {
-    id: "form-2",
-    title: "Nomination Form for Party Positions",
-    description: "Nomination form for various party leadership positions",
-    date: "2024-01-01",
-    fileUrl: "/uploads/CCU_Nomination_Form.pdf",
-    fileName: "CCU_Nomination_Form.pdf",
-    fileSize: "2.1 MB",
-    category: "documents",
-    subcategory: "forms"
-  },
-  {
-    id: "form-3",
-    title: "CCU Flag",
-    description: "Official party flag in PNG format",
-    date: "2024-01-15",
-    fileUrl: "/uploads/CCU_Flag.png",
-    fileName: "CCU_Flag.png",
-    fileSize: "2.4 MB",
-    category: "branding",
-    subcategory: "flag"
-  },
-  {
-    id: "form-4",
-    title: "CCU Logo (PNG)",
-    description: "Official party logo in PNG format",
-    date: "2024-01-15",
-    fileUrl: "/uploads/CCU_Logo.png",
-    fileName: "CCU_Logo.png",
-    fileSize: "2.4 MB",
-    category: "branding",
-    subcategory: "logos"
-  },
-  {
-    id: "form-5",
-    title: "CCU Logo (Landscape)",
-    description: "Official party logo in landscape orientation PNG format",
-    date: "2024-01-15",
-    fileUrl: "/uploads/logo_landscape.png",
-    fileName: "logo_landscape.png",
-    fileSize: "2.4 MB",
-    category: "branding",
-    subcategory: "landscape"
-  }
-  //graphics and photos
 ];
 
 // Helper function to get file icon based on type
@@ -392,14 +458,13 @@ const getFileIcon = (fileUrl: string) => {
     case 'jpg':
     case 'jpeg':
     case 'svg':
+    case 'gif':
+    case 'webp':
       return <ImageIcon className="w-5 h-5 text-blue-500" />;
     case 'mp4':
     case 'avi':
     case 'mov':
       return <Video className="w-5 h-5 text-purple-500" />;
-    case 'zip':
-    case 'rar':
-      return <File className="w-5 h-5 text-yellow-500" />;
     case 'mp3':
     case 'wav':
       return <Video className="w-5 h-5 text-green-500" />;
@@ -411,7 +476,7 @@ const getFileIcon = (fileUrl: string) => {
 // Helper function to check if file is previewable (images or PDFs)
 const isPreviewable = (fileUrl: string) => {
   const extension = fileUrl.split('.').pop()?.toLowerCase();
-  return ['png', 'jpg', 'jpeg', 'svg', 'pdf'].includes(extension || '');
+  return ['png', 'jpg', 'jpeg', 'svg', 'pdf', 'gif', 'webp'].includes(extension || '');
 };
 
 // Helper function to check if file is an image
@@ -467,8 +532,8 @@ const downloadFile = async (fileUrl: string, fileName: string) => {
   } catch (error) {
     console.error('Download error:', error);
 
-    // Fallback: Try to open in new tab for PDFs
-    if (fileUrl.endsWith('.pdf')) {
+    // Fallback: Try to open in new tab for PDFs and images
+    if (fileUrl.endsWith('.pdf') || isImage(fileUrl)) {
       window.open(fileUrl, '_blank');
       setTimeout(() => {
         window.location.reload();
@@ -773,8 +838,14 @@ export default function Downloads() {
 
     const category = mediaCategories.find(cat => cat.id === selectedCategory);
     if (selectedSubcategory) {
-      const subcategory = documentSubcategories.find(sub => sub.id === selectedSubcategory);
-      return `${category?.title} - ${subcategory?.title}`;
+      if (selectedCategory === "documents") {
+        const subcategory = documentSubcategories.find(sub => sub.id === selectedSubcategory);
+        return `${category?.title} - ${subcategory?.title}`;
+      } else if (selectedCategory === "photos") {
+        const subcategory = photosSubcategories.find(sub => sub.id === selectedSubcategory);
+        return `${category?.title} - ${subcategory?.title}`;
+      }
+      return `${category?.title} - ${selectedSubcategory}`;
     }
 
     return category?.title || "Documents";
@@ -820,7 +891,7 @@ export default function Downloads() {
     updateUrlWithCategory(categoryId);
   };
 
-  // Group documents by subcategory for documents category
+  // Group documents by subcategory
   const groupDocumentsBySubcategory = () => {
     const grouped: { [key: string]: typeof mediaDocuments } = {};
 
@@ -910,7 +981,7 @@ export default function Downloads() {
               </div>
             </div>
 
-            {/* Subcategory filters for documents */}
+            {/* Subcategory filters */}
             {selectedCategory === "documents" && (
               <div className="mb-6">
                 <h4 className="font-medium mb-3 text-muted-foreground">Document Types:</h4>
@@ -927,6 +998,37 @@ export default function Downloads() {
                     All Documents
                   </Button>
                   {documentSubcategories.map((subcategory) => (
+                    <Button
+                      key={subcategory.id}
+                      variant={activeSubcategory === subcategory.id ? "default" : "outline"}
+                      size="sm"
+                      onClick={() => handleSubcategoryClick(subcategory.id)}
+                      className="flex items-center gap-2"
+                    >
+                      <subcategory.icon className="w-4 h-4" />
+                      {subcategory.title}
+                    </Button>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {selectedCategory === "photos" && (
+              <div className="mb-6">
+                <h4 className="font-medium mb-3 text-muted-foreground">Photos & Graphics Types:</h4>
+                <div className="flex flex-wrap gap-2">
+                  <Button
+                    variant={!selectedSubcategory ? "default" : "outline"}
+                    size="sm"
+                    onClick={() => {
+                      setSelectedSubcategory(null);
+                      setActiveSubcategory(null);
+                      updateUrlWithCategory(selectedCategory, null);
+                    }}
+                  >
+                    All Photos & Graphics
+                  </Button>
+                  {photosSubcategories.map((subcategory) => (
                     <Button
                       key={subcategory.id}
                       variant={activeSubcategory === subcategory.id ? "default" : "outline"}
@@ -987,7 +1089,10 @@ export default function Downloads() {
                 )}
                 {selectedSubcategory && (
                   <span className="ml-2 px-2 py-1 bg-blue-500/10 text-blue-500 rounded-full text-xs">
-                    {documentSubcategories.find(sub => sub.id === selectedSubcategory)?.title}
+                    {selectedCategory === "documents"
+                      ? documentSubcategories.find(sub => sub.id === selectedSubcategory)?.title
+                      : photosSubcategories.find(sub => sub.id === selectedSubcategory)?.title
+                    }
                   </span>
                 )}
               </p>
@@ -1003,10 +1108,16 @@ export default function Downloads() {
                 <Button onClick={handleClearFilters}>Clear All Filters</Button>
               </div>
             ) : (
-              // Show grouped documents for documents category, otherwise show flat list
-              selectedCategory === "documents" && !selectedSubcategory ? (
+              // Show grouped documents for categories with subcategories
+              (selectedCategory === "documents" || selectedCategory === "photos") && !selectedSubcategory ? (
                 Object.entries(groupedDocuments).map(([subcategoryId, docs]) => {
-                  const subcategory = documentSubcategories.find(sub => sub.id === subcategoryId);
+                  let subcategory;
+                  if (selectedCategory === "documents") {
+                    subcategory = documentSubcategories.find(sub => sub.id === subcategoryId);
+                  } else if (selectedCategory === "photos") {
+                    subcategory = photosSubcategories.find(sub => sub.id === subcategoryId);
+                  }
+
                   return (
                     <div key={subcategoryId} className="mb-8">
                       {/* Subcategory Header */}
@@ -1017,13 +1128,13 @@ export default function Downloads() {
                           </div>
                           <div>
                             <h3 className="font-display text-lg font-bold">{subcategory.title}</h3>
-                            <p className="text-sm text-muted-foreground">{subcategory.description} • {docs.length} documents</p>
+                            <p className="text-sm text-muted-foreground">{subcategory.description} • {docs.length} files</p>
                           </div>
                         </div>
                       )}
 
                       {/* Documents in this subcategory */}
-                      <div className="space-y-4">
+                      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                         {docs.map((document) => {
                           const highlighted = isHighlighted(document.title);
                           const isDownloadingThis = isDownloading === document.fileName;
@@ -1033,14 +1144,14 @@ export default function Downloads() {
                             <div
                               key={document.id}
                               ref={highlighted ? highlightedRef : null}
-                              className={`bg-card border rounded-xl p-6 transition-all duration-200 ${highlighted
+                              className={`bg-card border rounded-xl p-4 transition-all duration-200 hover:shadow-md ${highlighted
                                 ? 'border-primary shadow-lg ring-2 ring-primary/20 bg-primary/5'
                                 : 'border-border hover:border-primary/50'
                                 }`}
                             >
-                              <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
-                                <div className="flex items-start gap-4">
-                                  <div className={`w-12 h-12 rounded-lg flex items-center justify-center flex-shrink-0 ${highlighted ? 'bg-primary/20' : 'bg-muted'
+                              <div className="flex flex-col h-full">
+                                <div className="flex items-start gap-3 mb-3">
+                                  <div className={`w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0 ${highlighted ? 'bg-primary/20' : 'bg-muted'
                                     }`}>
                                     {getFileIcon(document.fileUrl)}
                                     {highlighted && (
@@ -1049,74 +1160,76 @@ export default function Downloads() {
                                       </div>
                                     )}
                                   </div>
-                                  <div>
+                                  <div className="flex-1">
                                     <div className="flex items-center gap-2 mb-1">
-                                      <h3 className="font-display text-lg font-bold">
+                                      <h3 className="font-display font-bold text-sm line-clamp-2">
                                         {document.title}
                                       </h3>
-                                      {highlighted && (
-                                        <span className="px-2 py-0.5 bg-primary text-primary-foreground rounded-full text-xs font-medium">
-                                          Highlighted
-                                        </span>
-                                      )}
                                     </div>
-                                    <p className="text-muted-foreground mb-2">
+                                    <p className="text-xs text-muted-foreground mb-2 line-clamp-2">
                                       {document.description}
                                     </p>
-                                    <div className="flex flex-wrap gap-4 text-sm text-muted-foreground">
-                                      <span className="flex items-center gap-1">
-                                        <Calendar className="w-4 h-4" />
-                                        {new Date(document.date).toLocaleDateString('en-US', {
-                                          year: 'numeric',
-                                          month: 'long',
-                                          day: 'numeric'
-                                        })}
-                                      </span>
-                                      <span className="flex items-center gap-1">
-                                        <FileType className="w-4 h-4" />
-                                        {getFileExtension(document.fileUrl).toUpperCase()}
-                                      </span>
-                                      <span>{document.fileSize}</span>
-                                      {canPreview && (
-                                        <span className="text-blue-500 flex items-center gap-1">
-                                          <Eye className="w-3 h-3" />
-                                          Preview available
-                                        </span>
-                                      )}
-                                    </div>
                                   </div>
                                 </div>
 
-                                <div className="flex items-center gap-2">
-                                  {canPreview && (
-                                    <Button
-                                      variant="outline"
+                                {/* Thumbnail for images */}
+                                {isImage(document.fileUrl) && (
+                                  <div className="mb-3 rounded-lg overflow-hidden bg-muted">
+                                    <img
+                                      src={document.fileUrl}
+                                      alt={document.title}
+                                      className="w-full h-40 object-cover hover:scale-105 transition-transform duration-300"
                                       onClick={() => handlePreview(document)}
-                                      className="flex items-center gap-2"
-                                    >
-                                      <Eye className="w-4 h-4" />
-                                      Preview
-                                    </Button>
-                                  )}
-                                  <Button
-                                    onClick={() => handleDownload(document.fileUrl, document.fileName, document.title)}
-                                    disabled={isDownloadingThis}
-                                    data-downloading={isDownloadingThis ? "true" : undefined}
-                                    className={`flex-shrink-0 ${highlighted ? 'bg-primary hover:bg-primary/90' : ''} ${isDownloadingThis ? 'opacity-50 cursor-not-allowed' : ''
-                                      }`}
-                                  >
-                                    {isDownloadingThis ? (
-                                      <>
-                                        <RefreshCw className="mr-2 w-4 h-4 animate-spin" />
-                                        Downloading...
-                                      </>
-                                    ) : (
-                                      <>
-                                        <Download className="mr-2 w-4 h-4" />
-                                        Download
-                                      </>
+                                    />
+                                  </div>
+                                )}
+
+                                <div className="mt-auto">
+                                  <div className="flex items-center justify-between text-xs text-muted-foreground mb-3">
+                                    <span className="flex items-center gap-1">
+                                      <Calendar className="w-3 h-3" />
+                                      {new Date(document.date).toLocaleDateString('en-US', {
+                                        month: 'short',
+                                        day: 'numeric',
+                                        year: 'numeric'
+                                      })}
+                                    </span>
+                                    <span>{document.fileSize}</span>
+                                  </div>
+
+                                  <div className="flex items-center gap-2">
+                                    {canPreview && (
+                                      <Button
+                                        variant="outline"
+                                        size="sm"
+                                        onClick={() => handlePreview(document)}
+                                        className="flex-1 flex items-center justify-center gap-1 text-xs"
+                                      >
+                                        <Eye className="w-3 h-3" />
+                                        Preview
+                                      </Button>
                                     )}
-                                  </Button>
+                                    <Button
+                                      size="sm"
+                                      onClick={() => handleDownload(document.fileUrl, document.fileName, document.title)}
+                                      disabled={isDownloadingThis}
+                                      data-downloading={isDownloadingThis ? "true" : undefined}
+                                      className={`flex-1 ${highlighted ? 'bg-primary hover:bg-primary/90' : ''} ${isDownloadingThis ? 'opacity-50 cursor-not-allowed' : ''
+                                        }`}
+                                    >
+                                      {isDownloadingThis ? (
+                                        <>
+                                          <RefreshCw className="mr-1 w-3 h-3 animate-spin" />
+                                          Downloading...
+                                        </>
+                                      ) : (
+                                        <>
+                                          <Download className="mr-1 w-3 h-3" />
+                                          Download
+                                        </>
+                                      )}
+                                    </Button>
+                                  </div>
                                 </div>
                               </div>
                             </div>
@@ -1164,9 +1277,12 @@ export default function Downloads() {
                                     Highlighted
                                   </span>
                                 )}
-                                {document.subcategory && document.category === "documents" && (
+                                {document.subcategory && (
                                   <span className="px-2 py-0.5 bg-blue-500/10 text-blue-500 rounded-full text-xs">
-                                    {documentSubcategories.find(sub => sub.id === document.subcategory)?.title}
+                                    {selectedCategory === "documents"
+                                      ? documentSubcategories.find(sub => sub.id === document.subcategory)?.title
+                                      : photosSubcategories.find(sub => sub.id === document.subcategory)?.title
+                                    }
                                   </span>
                                 )}
                               </div>
@@ -1247,9 +1363,6 @@ export default function Downloads() {
               Back to Media Categories
             </Button>
           </div>
-
-          {/* Usage Guidelines */}
-
         </section>
 
         {/* Preview Modal */}

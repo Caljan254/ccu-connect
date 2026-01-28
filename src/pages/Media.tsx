@@ -9,7 +9,6 @@ import { useNavigate } from "react-router-dom";
 
 
 const getFilePath = (fileName: string): string => {
-
   return `uploads/${fileName}`;
 };
 
@@ -19,13 +18,11 @@ const mediaCategories = [
     icon: Image,
     title: "Party Logo & Branding",
     description: "Official CCU logos, colors, and branding guidelines",
-    subcategories: [
-
-    ],
+    subcategories: [],
     items: [
-      { name: "Party Logo ", type: "image", category: "branding", subcategory: "logos", fileName: "CCU_Logo.png" },
-      { name: "Party Flag ", type: "image", category: "branding", subcategory: "Flag", fileName: "CCU_Flag.png" },
-      { name: "CCU Logo landscape", type: "pdf", category: "branding", subcategory: "landscape", fileName: "logo_landscape.png" },
+      { name: "Party Logo (PNG)", type: "image", category: "branding", subcategory: "logos", fileName: "CCU_Logo.png" },
+      { name: "Party Flag (PNG)", type: "image", category: "branding", subcategory: "Flag", fileName: "CCU_Flag.png" },
+      { name: "CCU Logo Landscape", type: "image", category: "branding", subcategory: "landscape", fileName: "logo_landscape.png" },
       { name: "Brand Guidelines", type: "pdf", category: "branding", subcategory: "brand-guidelines", fileName: "CCU_Brand_Guidelines.pdf" },
     ],
   },
@@ -34,17 +31,14 @@ const mediaCategories = [
     icon: FileText,
     title: "Party Documents",
     description: "Constitution, manifesto, and policy documents",
-
-    subcategories: [
-
-    ],
+    subcategories: [],
     items: [
       { name: "Party Constitution 2024", type: "pdf", category: "documents", subcategory: "constitution", fileName: "CCU CONSTITUTION SEPT. 2020.pdf" },
       { name: "Financial Statements", type: "pdf", category: "documents", subcategory: "financial-reports", fileName: "CCU_ANNUAL_FINANCIAL_REPORTS_30_JUNE_2024.pdf" },
       { name: "Policy Framework", type: "pdf", category: "documents", subcategory: "constitution", fileName: "CCU STRATEGIC PLAN.pdf" },
-      { name: "Notices", type: "pdf", category: "documents", subcategory: "notices", fileName: "NOTICE-OF-A-NEC-MEETING-12-03-2024-3.pdf" },
+      { name: "Meeting Notices", type: "pdf", category: "documents", subcategory: "notices", fileName: "NOTICE-OF-A-NEC-MEETING-12-03-2024-3.pdf" },
       { name: "Election Manifesto", type: "pdf", category: "documents", subcategory: "constitution", fileName: "CCU MANIFESTO.pdf" },
-      { name: "Membership Form", type: "pdf", category: "documents", subcategory: "forms", fileName: "CCU Member Registration Form.pdf" },
+      { name: "Membership Form", type: "pdf", category: "documents", subcategory: "forms", fileName: "CCU_Membership_Form.pdf" },
       { name: "Strategic Plan", type: "pdf", category: "documents", subcategory: "constitution", fileName: "CCU STRATEGIC PLAN.pdf" },
       { name: "Code of Conduct", type: "pdf", category: "documents", subcategory: "constitution", fileName: "Electoral Code of Conduct.pdf" },
       { name: "Disciplinary Procedure", type: "pdf", category: "documents", subcategory: "constitution", fileName: "GUIDELINES FOR THE DISCIPLINARY PROCESS OF CHAMA CHA UZALENDO (CCU) PARTY DISCIPLINARY COMMITTEE.pdf" },
@@ -56,14 +50,16 @@ const mediaCategories = [
     icon: Image,
     title: "Photos & Graphics",
     description: "Official photos, banners, and campaign materials",
-    subcategories: [
-
-    ],
+    subcategories: [],
     items: [
-      { name: "Leadership Photos", type: "zip", category: "photos", subcategory: "photos", fileName: "leadership_photos.zip" },
-      { name: "Campaign Posters", type: "zip", category: "photos", subcategory: "graphics", fileName: "campaign_posters.zip" },
-      { name: "Social Media Kit", type: "zip", category: "photos", subcategory: "graphics", fileName: "social_media_kit.zip" },
-      { name: "Event Banners", type: "zip", category: "photos", subcategory: "graphics", fileName: "event_banners.zip" },
+      { name: "Leadership Photos", type: "image", category: "photos", subcategory: "leadership-photos", fileName: "leadership/chairman_portrait.jpg" },
+      { name: "Campaign Posters", type: "image", category: "photos", subcategory: "campaign-materials", fileName: "campaign/campaign_poster_2024.jpg" },
+      { name: "Social Media Graphics", type: "image", category: "photos", subcategory: "social-media", fileName: "social/facebook_cover.jpg" },
+      { name: "Event Photos", type: "image", category: "photos", subcategory: "event-photos", fileName: "events/launch_event_1.jpg" },
+      { name: "Campaign Banner Design", type: "image", category: "photos", subcategory: "campaign-materials", fileName: "campaign/election_banner.jpg" },
+      { name: "Instagram Templates", type: "image", category: "photos", subcategory: "social-media", fileName: "social/instagram_story_template.jpg" },
+      { name: "Leadership Team Photo", type: "image", category: "photos", subcategory: "leadership-photos", fileName: "leadership/nec_group_photo.jpg" },
+      { name: "Youth Event Photos", type: "image", category: "photos", subcategory: "event-photos", fileName: "events/youth_event.jpg" },
     ],
   },
   {
@@ -71,13 +67,11 @@ const mediaCategories = [
     icon: Video,
     title: "Videos & Audio",
     description: "Campaign videos, speeches, and audio files",
-    subcategories: [
-
-    ],
+    subcategories: [],
     items: [
       { name: "Party Anthem", type: "audio", category: "videos", subcategory: "audio", fileName: "party_anthem.mp3" },
       { name: "2024 Campaign Video", type: "video", category: "videos", subcategory: "videos", fileName: "CCU Website Banners.mp4" },
-      { name: "Leadership Speeches", type: "zip", category: "videos", subcategory: "audio", fileName: "leadership_speeches.zip" },
+      { name: "Leadership Speech", type: "audio", category: "videos", subcategory: "audio", fileName: "leadership_speech.mp3" },
     ],
   },
 ];
@@ -196,26 +190,34 @@ export default function Media() {
                 )}
 
                 {/* Category Items */}
-                <div className="grid md:grid-cols-2 gap-4">
-                  {category.items.map((item) => (
+                <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+                  {category.items.map((item, index) => (
                     <div
-                      key={`${item.name}-${item.subcategory}`}
+                      key={`${item.name}-${item.subcategory}-${index}`}
                       className="bg-card border border-border rounded-xl p-4 flex items-center justify-between hover:border-primary/50 hover:shadow-md transition-all duration-200 cursor-pointer group/item"
                       onClick={() => handleItemClick(category.id, item.name, item.subcategory, item.fileName)}
                     >
                       <div className="flex items-center gap-4">
                         <div className="w-10 h-10 rounded-lg bg-muted flex items-center justify-center group-hover/item:bg-primary/10 transition-colors">
-                          <File className="w-5 h-5 text-muted-foreground group-hover/item:text-primary transition-colors" />
+                          {item.type === 'image' ? (
+                            <Image className="w-5 h-5 text-blue-500 group-hover/item:text-blue-600 transition-colors" />
+                          ) : item.type === 'pdf' ? (
+                            <FileText className="w-5 h-5 text-red-500 group-hover/item:text-red-600 transition-colors" />
+                          ) : item.type === 'video' ? (
+                            <Video className="w-5 h-5 text-purple-500 group-hover/item:text-purple-600 transition-colors" />
+                          ) : item.type === 'audio' ? (
+                            <Video className="w-5 h-5 text-green-500 group-hover/item:text-green-600 transition-colors" />
+                          ) : (
+                            <File className="w-5 h-5 text-muted-foreground group-hover/item:text-primary transition-colors" />
+                          )}
                         </div>
-                        <div>
-                          <p className="font-medium group-hover/item:text-primary transition-colors">
+                        <div className="flex-1">
+                          <p className="font-medium group-hover/item:text-primary transition-colors line-clamp-2">
                             {item.name}
                           </p>
-                          {item.fileName && (
-                            <p className="text-xs text-muted-foreground mt-1">
-                              File: {item.fileName}
-                            </p>
-                          )}
+                          <p className="text-xs text-muted-foreground mt-1 capitalize">
+                            {item.type} • {item.category === 'photos' ? 'Preview available' : 'Download'}
+                          </p>
                         </div>
                       </div>
                       <div className="flex items-center gap-2">
