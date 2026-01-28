@@ -25,10 +25,15 @@ import {
   X,
   Maximize2,
   Minimize2,
-  ChevronLeft,
-  ChevronRight,
   ZoomIn,
-  ZoomOut
+  ZoomOut,
+  Volume2,
+  Play,
+  Pause,
+  SkipBack,
+  SkipForward,
+  VolumeX,
+  Volume1
 } from "lucide-react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useState, useEffect, useRef } from "react";
@@ -115,6 +120,34 @@ const photosSubcategories = [
     icon: ImageIcon,
     title: "Event Photos",
     description: "Photos from party events and rallies"
+  }
+];
+
+// Videos & Audio subcategories
+const mediaSubcategories = [
+  {
+    id: "speeches",
+    icon: Volume2,
+    title: "Speeches",
+    description: "Campaign speeches and addresses"
+  },
+  {
+    id: "interviews",
+    icon: Megaphone,
+    title: "Interviews",
+    description: "Radio and TV interviews"
+  },
+  {
+    id: "campaign-videos",
+    icon: Video,
+    title: "Campaign Videos",
+    description: "Official campaign video materials"
+  },
+  {
+    id: "audio-recordings",
+    icon: Volume2,
+    title: "Audio Recordings",
+    description: "Audio files and recordings"
   }
 ];
 
@@ -445,6 +478,86 @@ const mediaDocuments = [
     category: "documents",
     subcategory: "forms"
   },
+
+  // VIDEOS & AUDIOS
+  {
+    id: "video-1",
+    title: "Campaign Video - Vision 2024",
+    description: "Official campaign video for 2024 elections",
+    date: "2024-03-15",
+    fileUrl: "/uploads/ccu-website-banners.mp4",
+    fileName: "ccu-website-banners.mp4",
+    fileSize: "145 MB",
+    category: "videos",
+    subcategory: "videos",
+    duration: "12:45",
+    format: "MP4"
+  },
+  {
+    id: "video-2",
+    title: "Chairman's Full Speech - Rally Nairobi",
+    description: "Complete speech from Nairobi rally",
+    date: "2024-02-28",
+    fileUrl: "/uploads/videos/nairobi-rally-speech.mp4",
+    fileName: "nairobi-rally-speech.mp4",
+    fileSize: "220 MB",
+    category: "videos",
+    subcategory: "speeches",
+    duration: "25:30",
+    format: "MP4"
+  },
+  {
+    id: "video-3",
+    title: "Party Launch Ceremony",
+    description: "Full coverage of party launch ceremony",
+    date: "2024-01-10",
+    fileUrl: "/uploads/videos/party-launch.mp4",
+    fileName: "party-launch.mp4",
+    fileSize: "320 MB",
+    category: "videos",
+    subcategory: "campaign-videos",
+    duration: "42:15",
+    format: "MP4"
+  },
+  {
+    id: "audio-1",
+    title: "Radio Interview - Morning Show",
+    description: "Chairman interview on national radio morning show",
+    date: "2024-03-10",
+    fileUrl: "/uploads/audio/radio-interview.mp3",
+    fileName: "radio-interview.mp3",
+    fileSize: "45 MB",
+    category: "videos",
+    subcategory: "interviews",
+    duration: "32:15",
+    format: "MP3"
+  },
+  {
+    id: "audio-2",
+    title: "Policy Announcement Audio",
+    description: "Audio recording of new policy announcement",
+    date: "2024-02-20",
+    fileUrl: "/uploads/audio/policy-announcement.mp3",
+    fileName: "policy-announcement.mp3",
+    fileSize: "28 MB",
+    category: "videos",
+    subcategory: "speeches",
+    duration: "18:30",
+    format: "MP3"
+  },
+  {
+    id: "audio-3",
+    title: "Party Anthem Recording",
+    description: "Official CCU party anthem",
+    date: "2024-01-05",
+    fileUrl: "/uploads/audio/party-anthem.mp3",
+    fileName: "party-anthem.mp3",
+    fileSize: "8.5 MB",
+    category: "videos",
+    subcategory: "audio-recordings",
+    duration: "03:45",
+    format: "MP3"
+  },
 ];
 
 // Helper function to get file icon based on type
@@ -463,25 +576,46 @@ const getFileIcon = (fileUrl: string) => {
     case 'mp4':
     case 'avi':
     case 'mov':
+    case 'webm':
+    case 'mkv':
       return <Video className="w-5 h-5 text-purple-500" />;
     case 'mp3':
     case 'wav':
-      return <Video className="w-5 h-5 text-green-500" />;
+    case 'ogg':
+    case 'm4a':
+    case 'flac':
+      return <Volume2 className="w-5 h-5 text-green-500" />;
     default:
       return <File className="w-5 h-5 text-gray-500" />;
   }
 };
 
-// Helper function to check if file is previewable (images or PDFs)
+// Helper function to check if file is previewable (images, PDFs, audio, or video)
 const isPreviewable = (fileUrl: string) => {
   const extension = fileUrl.split('.').pop()?.toLowerCase();
-  return ['png', 'jpg', 'jpeg', 'svg', 'pdf', 'gif', 'webp'].includes(extension || '');
+  return [
+    'png', 'jpg', 'jpeg', 'svg', 'pdf', 'gif', 'webp', // Images and PDFs
+    'mp4', 'avi', 'mov', 'webm', 'mkv', // Videos
+    'mp3', 'wav', 'ogg', 'm4a', 'flac' // Audio
+  ].includes(extension || '');
 };
 
 // Helper function to check if file is an image
 const isImage = (fileUrl: string) => {
   const extension = fileUrl.split('.').pop()?.toLowerCase();
   return ['png', 'jpg', 'jpeg', 'svg', 'gif', 'webp'].includes(extension || '');
+};
+
+// Helper function to check if file is a video
+const isVideo = (fileUrl: string) => {
+  const extension = fileUrl.split('.').pop()?.toLowerCase();
+  return ['mp4', 'avi', 'mov', 'webm', 'mkv'].includes(extension || '');
+};
+
+// Helper function to check if file is audio
+const isAudio = (fileUrl: string) => {
+  const extension = fileUrl.split('.').pop()?.toLowerCase();
+  return ['mp3', 'wav', 'ogg', 'm4a', 'flac'].includes(extension || '');
 };
 
 // Helper function to get file extension
@@ -578,6 +712,280 @@ const handleDownloadWithFeedback = async (fileUrl: string, fileName: string, tit
   }
 };
 
+// Audio/Video Player Component
+const MediaPlayer = ({
+  fileUrl,
+  title,
+  isVideo: videoMode,
+  onTimeUpdate,
+  currentTime,
+  duration
+}: {
+  fileUrl: string,
+  title: string,
+  isVideo: boolean,
+  onTimeUpdate: (time: number) => void,
+  currentTime: number,
+  duration: number
+}) => {
+  const mediaRef = useRef<HTMLVideoElement | HTMLAudioElement>(null);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [volume, setVolume] = useState(1);
+  const [isMuted, setIsMuted] = useState(false);
+  const [playbackRate, setPlaybackRate] = useState(1);
+
+  useEffect(() => {
+    if (mediaRef.current) {
+      const media = mediaRef.current;
+
+      const handleTimeUpdate = () => {
+        onTimeUpdate(media.currentTime);
+      };
+
+      const handleLoadedMetadata = () => {
+        onTimeUpdate(0);
+      };
+
+      const handlePlay = () => setIsPlaying(true);
+      const handlePause = () => setIsPlaying(false);
+      const handleEnded = () => setIsPlaying(false);
+
+      media.addEventListener('timeupdate', handleTimeUpdate);
+      media.addEventListener('loadedmetadata', handleLoadedMetadata);
+      media.addEventListener('play', handlePlay);
+      media.addEventListener('pause', handlePause);
+      media.addEventListener('ended', handleEnded);
+
+      return () => {
+        media.removeEventListener('timeupdate', handleTimeUpdate);
+        media.removeEventListener('loadedmetadata', handleLoadedMetadata);
+        media.removeEventListener('play', handlePlay);
+        media.removeEventListener('pause', handlePause);
+        media.removeEventListener('ended', handleEnded);
+      };
+    }
+  }, [onTimeUpdate]);
+
+  const togglePlayPause = () => {
+    if (mediaRef.current) {
+      if (isPlaying) {
+        mediaRef.current.pause();
+      } else {
+        mediaRef.current.play();
+      }
+    }
+  };
+
+  const handleSeek = (time: number) => {
+    if (mediaRef.current) {
+      mediaRef.current.currentTime = time;
+      onTimeUpdate(time);
+    }
+  };
+
+  const handleVolumeChange = (newVolume: number) => {
+    setVolume(newVolume);
+    if (mediaRef.current) {
+      mediaRef.current.volume = newVolume;
+      setIsMuted(newVolume === 0);
+    }
+  };
+
+  const toggleMute = () => {
+    if (mediaRef.current) {
+      mediaRef.current.muted = !isMuted;
+      setIsMuted(!isMuted);
+      if (!isMuted) {
+        setVolume(0);
+      } else {
+        setVolume(1);
+        mediaRef.current.volume = 1;
+      }
+    }
+  };
+
+  const formatTime = (time: number) => {
+    const minutes = Math.floor(time / 60);
+    const seconds = Math.floor(time % 60);
+    return `${minutes}:${seconds.toString().padStart(2, '0')}`;
+  };
+
+  const skipBackward = () => {
+    if (mediaRef.current) {
+      mediaRef.current.currentTime = Math.max(0, mediaRef.current.currentTime - 10);
+    }
+  };
+
+  const skipForward = () => {
+    if (mediaRef.current) {
+      mediaRef.current.currentTime = Math.min(duration, mediaRef.current.currentTime + 10);
+    }
+  };
+
+  const changePlaybackRate = (rate: number) => {
+    setPlaybackRate(rate);
+    if (mediaRef.current) {
+      mediaRef.current.playbackRate = rate;
+    }
+  };
+
+  const getVolumeIcon = () => {
+    if (isMuted || volume === 0) {
+      return <VolumeX className="w-5 h-5" />;
+    } else if (volume < 0.5) {
+      return <Volume1 className="w-5 h-5" />;
+    } else {
+      return <Volume2 className="w-5 h-5" />;
+    }
+  };
+
+  return (
+    <div className="w-full h-full flex flex-col">
+      <div className="flex-1 flex items-center justify-center bg-black rounded-lg overflow-hidden">
+        {videoMode ? (
+          <video
+            ref={mediaRef as React.RefObject<HTMLVideoElement>}
+            src={fileUrl}
+            className="w-full h-full max-h-[70vh] object-contain"
+            controls={false}
+            playsInline
+            preload="metadata"
+            poster={`/thumbnails/${fileUrl.split('/').pop()?.replace(/\.[^/.]+$/, "")}.jpg`}
+          />
+        ) : (
+          <div className="text-center p-8 w-full max-w-md">
+            <div className="mb-6">
+              <div className="w-24 h-24 rounded-full bg-gradient-to-br from-primary/20 to-primary/10 flex items-center justify-center mx-auto mb-4">
+                <Volume2 className="w-12 h-12 text-primary" />
+              </div>
+              <h3 className="text-xl font-bold text-white mb-2">{title}</h3>
+              <p className="text-gray-300">Now Playing</p>
+            </div>
+            <audio
+              ref={mediaRef as React.RefObject<HTMLAudioElement>}
+              src={fileUrl}
+              className="hidden"
+              controls={false}
+              preload="metadata"
+            />
+            <div className="relative">
+              <div className="w-full h-32 rounded-lg bg-gradient-to-r from-primary/20 to-blue-500/20 flex items-center justify-center">
+                <div className="w-full h-16 flex items-end justify-center gap-1 px-4">
+                  {Array.from({ length: 40 }).map((_, i) => (
+                    <div
+                      key={i}
+                      className="w-2 bg-primary rounded-t-lg animate-pulse"
+                      style={{
+                        height: `${20 + Math.sin(i * 0.3) * 30}%`,
+                        animationDelay: `${i * 50}ms`,
+                        opacity: isPlaying ? 1 : 0.5
+                      }}
+                    />
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+      </div>
+
+      {/* Custom Controls */}
+      <div className="bg-gray-900 p-4 rounded-b-lg">
+        {/* Progress Bar */}
+        <div className="mb-4">
+          <input
+            type="range"
+            min="0"
+            max={duration || 100}
+            value={currentTime}
+            onChange={(e) => handleSeek(parseFloat(e.target.value))}
+            className="w-full h-2 bg-gray-700 rounded-lg appearance-none cursor-pointer [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:h-4 [&::-webkit-slider-thumb]:w-4 [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-primary"
+          />
+          <div className="flex justify-between text-sm text-gray-400 mt-1">
+            <span>{formatTime(currentTime)}</span>
+            <div className="flex items-center gap-2">
+              <select
+                value={playbackRate}
+                onChange={(e) => changePlaybackRate(parseFloat(e.target.value))}
+                className="bg-gray-800 text-gray-300 text-xs px-2 py-1 rounded"
+              >
+                <option value="0.5">0.5x</option>
+                <option value="0.75">0.75x</option>
+                <option value="1">1x</option>
+                <option value="1.25">1.25x</option>
+                <option value="1.5">1.5x</option>
+                <option value="2">2x</option>
+              </select>
+              <span>{formatTime(duration)}</span>
+            </div>
+          </div>
+        </div>
+
+        {/* Control Buttons */}
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-4">
+            <Button
+              variant="ghost"
+              size="icon"
+              onClick={skipBackward}
+              className="text-white hover:bg-gray-800"
+              title="Skip back 10 seconds"
+            >
+              <SkipBack className="w-5 h-5" />
+            </Button>
+
+            <Button
+              variant="default"
+              size="icon"
+              onClick={togglePlayPause}
+              className="bg-primary hover:bg-primary/90 text-white"
+              title={isPlaying ? "Pause" : "Play"}
+            >
+              {isPlaying ? (
+                <Pause className="w-6 h-6" />
+              ) : (
+                <Play className="w-6 h-6" />
+              )}
+            </Button>
+
+            <Button
+              variant="ghost"
+              size="icon"
+              onClick={skipForward}
+              className="text-white hover:bg-gray-800"
+              title="Skip forward 10 seconds"
+            >
+              <SkipForward className="w-5 h-5" />
+            </Button>
+          </div>
+
+          <div className="flex items-center gap-2">
+            <Button
+              variant="ghost"
+              size="icon"
+              onClick={toggleMute}
+              className="text-white hover:bg-gray-800"
+              title={isMuted ? "Unmute" : "Mute"}
+            >
+              {getVolumeIcon()}
+            </Button>
+
+            <input
+              type="range"
+              min="0"
+              max="1"
+              step="0.01"
+              value={isMuted ? 0 : volume}
+              onChange={(e) => handleVolumeChange(parseFloat(e.target.value))}
+              className="w-24 h-2 bg-gray-700 rounded-lg appearance-none cursor-pointer [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:h-4 [&::-webkit-slider-thumb]:w-4 [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-primary"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
 // Preview Modal Component
 const PreviewModal = ({
   open,
@@ -595,10 +1003,28 @@ const PreviewModal = ({
   const [zoom, setZoom] = useState(1);
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [rotation, setRotation] = useState(0);
+  const [currentTime, setCurrentTime] = useState(0);
+  const [duration, setDuration] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
 
   const isImageFile = isImage(fileUrl);
+  const isVideoFile = isVideo(fileUrl);
+  const isAudioFile = isAudio(fileUrl);
   const isPDF = fileUrl.toLowerCase().endsWith('.pdf');
+
+  // Get duration for media files
+  useEffect(() => {
+    if (isVideoFile || isAudioFile) {
+      const media = document.createElement(isVideoFile ? 'video' : 'audio');
+      media.src = fileUrl;
+      media.addEventListener('loadedmetadata', () => {
+        setDuration(media.duration);
+      });
+      media.addEventListener('error', () => {
+        console.error('Failed to load media file:', fileUrl);
+      });
+    }
+  }, [fileUrl, isVideoFile, isAudioFile]);
 
   const handleDownload = () => {
     const link = document.createElement('a');
@@ -614,6 +1040,10 @@ const PreviewModal = ({
   const handleZoomReset = () => setZoom(1);
   const handleRotate = () => setRotation(prev => (prev + 90) % 360);
   const handleFullscreen = () => setIsFullscreen(!isFullscreen);
+
+  const handleTimeUpdate = (time: number) => {
+    setCurrentTime(time);
+  };
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
@@ -719,6 +1149,15 @@ const PreviewModal = ({
                 title={title}
               />
             </div>
+          ) : isVideoFile || isAudioFile ? (
+            <MediaPlayer
+              fileUrl={fileUrl}
+              title={title}
+              isVideo={isVideoFile}
+              onTimeUpdate={handleTimeUpdate}
+              currentTime={currentTime}
+              duration={duration}
+            />
           ) : (
             <div className="text-center p-8">
               <File className="w-16 h-16 text-muted-foreground mx-auto mb-4" />
@@ -743,7 +1182,10 @@ const PreviewModal = ({
             </button>
           </div>
           <div className="text-xs text-muted-foreground">
-            {isImageFile ? 'Scroll to zoom • Click and drag to pan' : 'Scroll to navigate • Press ESC to close'}
+            {isImageFile ? 'Scroll to zoom • Click and drag to pan' :
+              isVideoFile ? 'Use controls to play/pause • Adjust volume • Fullscreen available' :
+                isAudioFile ? 'Use controls to play/pause • Adjust volume • Change playback speed' :
+                  'Scroll to navigate • Press ESC to close'}
           </div>
         </div>
       </DialogContent>
@@ -842,6 +1284,9 @@ export default function Downloads() {
         return `${category?.title} - ${subcategory?.title}`;
       } else if (selectedCategory === "photos") {
         const subcategory = photosSubcategories.find(sub => sub.id === selectedSubcategory);
+        return `${category?.title} - ${subcategory?.title}`;
+      } else if (selectedCategory === "videos") {
+        const subcategory = mediaSubcategories.find(sub => sub.id === selectedSubcategory);
         return `${category?.title} - ${subcategory?.title}`;
       }
       return `${category?.title} - ${selectedSubcategory}`;
@@ -1043,6 +1488,37 @@ export default function Downloads() {
               </div>
             )}
 
+            {selectedCategory === "videos" && (
+              <div className="mb-6">
+                <h4 className="font-medium mb-3 text-muted-foreground">Media Types:</h4>
+                <div className="flex flex-wrap gap-2">
+                  <Button
+                    variant={!selectedSubcategory ? "default" : "outline"}
+                    size="sm"
+                    onClick={() => {
+                      setSelectedSubcategory(null);
+                      setActiveSubcategory(null);
+                      updateUrlWithCategory(selectedCategory, null);
+                    }}
+                  >
+                    All Media
+                  </Button>
+                  {mediaSubcategories.map((subcategory) => (
+                    <Button
+                      key={subcategory.id}
+                      variant={activeSubcategory === subcategory.id ? "default" : "outline"}
+                      size="sm"
+                      onClick={() => handleSubcategoryClick(subcategory.id)}
+                      className="flex items-center gap-2"
+                    >
+                      <subcategory.icon className="w-4 h-4" />
+                      {subcategory.title}
+                    </Button>
+                  ))}
+                </div>
+              </div>
+            )}
+
             {/* Search */}
             <div className="relative">
               <input
@@ -1090,7 +1566,9 @@ export default function Downloads() {
                   <span className="ml-2 px-2 py-1 bg-blue-500/10 text-blue-500 rounded-full text-xs">
                     {selectedCategory === "documents"
                       ? documentSubcategories.find(sub => sub.id === selectedSubcategory)?.title
-                      : photosSubcategories.find(sub => sub.id === selectedSubcategory)?.title
+                      : selectedCategory === "photos"
+                        ? photosSubcategories.find(sub => sub.id === selectedSubcategory)?.title
+                        : mediaSubcategories.find(sub => sub.id === selectedSubcategory)?.title
                     }
                   </span>
                 )}
@@ -1108,13 +1586,15 @@ export default function Downloads() {
               </div>
             ) : (
               // Show grouped documents for categories with subcategories
-              (selectedCategory === "documents" || selectedCategory === "photos") && !selectedSubcategory ? (
+              (selectedCategory === "documents" || selectedCategory === "photos" || selectedCategory === "videos") && !selectedSubcategory ? (
                 Object.entries(groupedDocuments).map(([subcategoryId, docs]) => {
                   let subcategory;
                   if (selectedCategory === "documents") {
                     subcategory = documentSubcategories.find(sub => sub.id === subcategoryId);
                   } else if (selectedCategory === "photos") {
                     subcategory = photosSubcategories.find(sub => sub.id === subcategoryId);
+                  } else if (selectedCategory === "videos") {
+                    subcategory = mediaSubcategories.find(sub => sub.id === subcategoryId);
                   }
 
                   return (
@@ -1138,6 +1618,9 @@ export default function Downloads() {
                           const highlighted = isHighlighted(document.title);
                           const isDownloadingThis = isDownloading === document.fileName;
                           const canPreview = isPreviewable(document.fileUrl);
+                          const isVideoFile = isVideo(document.fileUrl);
+                          const isAudioFile = isAudio(document.fileUrl);
+                          const isImageFile = isImage(document.fileUrl);
 
                           return (
                             <div
@@ -1168,18 +1651,62 @@ export default function Downloads() {
                                     <p className="text-xs text-muted-foreground mb-2 line-clamp-2">
                                       {document.description}
                                     </p>
+                                    {(isVideoFile || isAudioFile) && document.duration && (
+                                      <div className="text-xs text-blue-500 font-medium">
+                                        Duration: {document.duration}
+                                      </div>
+                                    )}
                                   </div>
                                 </div>
 
-                                {/* Thumbnail for images */}
-                                {isImage(document.fileUrl) && (
-                                  <div className="mb-3 rounded-lg overflow-hidden bg-muted">
-                                    <img
-                                      src={document.fileUrl}
-                                      alt={document.title}
-                                      className="w-full h-40 object-cover hover:scale-105 transition-transform duration-300"
-                                      onClick={() => handlePreview(document)}
-                                    />
+                                {/* Thumbnail for images and videos */}
+                                {(isImageFile || isVideoFile) && (
+                                  <div className="mb-3 rounded-lg overflow-hidden bg-muted relative cursor-pointer"
+                                    onClick={() => handlePreview(document)}>
+                                    {isImageFile ? (
+                                      <img
+                                        src={document.fileUrl}
+                                        alt={document.title}
+                                        className="w-full h-40 object-cover hover:scale-105 transition-transform duration-300"
+                                      />
+                                    ) : (
+                                      <div className="w-full h-40 bg-black flex items-center justify-center group">
+                                        <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent z-10" />
+                                        <Video className="w-12 h-12 text-white z-20" />
+                                        <div className="absolute bottom-2 right-2 z-20 bg-black/70 text-white text-xs px-2 py-1 rounded">
+                                          {document.duration || 'Video'}
+                                        </div>
+                                        <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity z-20">
+                                          <div className="w-16 h-16 bg-primary/80 rounded-full flex items-center justify-center">
+                                            <Play className="w-8 h-8 text-white" />
+                                          </div>
+                                        </div>
+                                      </div>
+                                    )}
+                                  </div>
+                                )}
+
+                                {/* Audio file display */}
+                                {isAudioFile && (
+                                  <div className="mb-3 rounded-lg overflow-hidden bg-muted p-4 cursor-pointer"
+                                    onClick={() => handlePreview(document)}>
+                                    <div className="flex items-center gap-3">
+                                      <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center">
+                                        <Volume2 className="w-6 h-6 text-primary" />
+                                      </div>
+                                      <div className="flex-1">
+                                        <div className="flex items-center justify-between">
+                                          <span className="text-sm font-medium">Audio Preview</span>
+                                          <span className="text-xs text-muted-foreground">{document.duration}</span>
+                                        </div>
+                                        <div className="w-full bg-gray-200 rounded-full h-2 mt-2">
+                                          <div className="bg-primary h-2 rounded-full w-1/3"></div>
+                                        </div>
+                                        <div className="text-xs text-muted-foreground mt-1">
+                                          Click to play audio
+                                        </div>
+                                      </div>
+                                    </div>
                                   </div>
                                 )}
 
@@ -1245,6 +1772,9 @@ export default function Downloads() {
                     const highlighted = isHighlighted(document.title);
                     const isDownloadingThis = isDownloading === document.fileName;
                     const canPreview = isPreviewable(document.fileUrl);
+                    const isVideoFile = isVideo(document.fileUrl);
+                    const isAudioFile = isAudio(document.fileUrl);
+                    const isImageFile = isImage(document.fileUrl);
 
                     return (
                       <div
@@ -1280,7 +1810,9 @@ export default function Downloads() {
                                   <span className="px-2 py-0.5 bg-blue-500/10 text-blue-500 rounded-full text-xs">
                                     {selectedCategory === "documents"
                                       ? documentSubcategories.find(sub => sub.id === document.subcategory)?.title
-                                      : photosSubcategories.find(sub => sub.id === document.subcategory)?.title
+                                      : selectedCategory === "photos"
+                                        ? photosSubcategories.find(sub => sub.id === document.subcategory)?.title
+                                        : mediaSubcategories.find(sub => sub.id === document.subcategory)?.title
                                     }
                                   </span>
                                 )}
@@ -1302,6 +1834,12 @@ export default function Downloads() {
                                   {getFileExtension(document.fileUrl).toUpperCase()}
                                 </span>
                                 <span>{document.fileSize}</span>
+                                {(isVideoFile || isAudioFile) && document.duration && (
+                                  <span className="text-purple-500 flex items-center gap-1">
+                                    {isVideoFile ? <Video className="w-3 h-3" /> : <Volume2 className="w-3 h-3" />}
+                                    {document.duration}
+                                  </span>
+                                )}
                                 {canPreview && (
                                   <span className="text-blue-500 flex items-center gap-1">
                                     <Eye className="w-3 h-3" />
