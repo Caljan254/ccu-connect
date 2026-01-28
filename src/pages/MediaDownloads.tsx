@@ -126,8 +126,8 @@ const mediaDocuments = [
     title: "Party Logo (PNG)",
     description: "Official party logo in PNG format",
     date: "2024-01-15",
-    fileUrl: "/uploads/CCU_Logo.png",
-    fileName: "CCU_Logo.png",
+    fileUrl: "/uploads/ccu-logo.png",
+    fileName: "ccu-logo.png",
     fileSize: "2.4 MB",
     category: "branding",
     subcategory: "logos"
@@ -137,8 +137,8 @@ const mediaDocuments = [
     title: "Logo Landscape",
     description: "Official party logo in landscape orientation",
     date: "2024-01-15",
-    fileUrl: "/uploads/logo_landscape.png",
-    fileName: "logo_landscape.png",
+    fileUrl: "/uploads/logo-landscape.png",
+    fileName: "logo-landscape.png",
     fileSize: "2.4 MB",
     category: "branding",
     subcategory: "landscape"
@@ -148,8 +148,8 @@ const mediaDocuments = [
     title: "Brand Guidelines",
     description: "Complete brand style guide and usage rules",
     date: "2024-01-15",
-    fileUrl: "/uploads/CCU Brand Guide.png",
-    fileName: "CCU Brand Guide.png",
+    fileUrl: "/uploads/brand-guide.png",
+    fileName: "brand-guide.png",
     fileSize: "5.6 MB",
     category: "branding",
     subcategory: "Brand guidelines"
@@ -159,8 +159,8 @@ const mediaDocuments = [
     title: "Party Flag (PNG)",
     description: "Official party flag in PNG format",
     date: "2024-01-15",
-    fileUrl: "/uploads/CCU_Flag.png",
-    fileName: "CCU_Flag.png",
+    fileUrl: "/uploads/ccu-flag.png",
+    fileName: "ccu-flag.png",
     fileSize: "2.4 MB",
     category: "branding",
     subcategory: "Flag"
@@ -229,8 +229,8 @@ const mediaDocuments = [
     title: "Election Banner Design",
     description: "Banner design for election campaigns",
     date: "2024-01-25",
-    fileUrl: "/uploads/CCU Website Banner.png",
-    fileName: "CCU Website Banner.png",
+    fileUrl: "/uploads/ccu-website-banner.png",
+    fileName: "ccu-website-banner.png",
     fileSize: "4.8 MB",
     category: "photos",
     subcategory: "campaign-materials"
@@ -264,8 +264,8 @@ const mediaDocuments = [
     title: "Facebook Cover Photo",
     description: "Official CCU cover photo for Facebook",
     date: "2024-01-30",
-    fileUrl: "/uploads/CCU_Facebook_Cover_2025.png",
-    fileName: "CCU_Facebook_Cover_2025.png",
+    fileUrl: "/uploads/facebook-cover-2025.png",
+    fileName: "facebook-cover-2025.png",
     fileSize: "2.7 MB",
     category: "photos",
     subcategory: "social-media"
@@ -356,8 +356,8 @@ const mediaDocuments = [
     title: "CCU Annual Financial Reports 30 June 2024",
     description: "Annual Financial Reports for the Year Ended June 30, 2024",
     date: "2024-06-30",
-    fileUrl: "/uploads/CCU_ANNUAL_FINANCIAL_REPORTS_30_JUNE_2024.pdf",
-    fileName: "CCU_ANNUAL_FINANCIAL_REPORTS_30_JUNE_2024.pdf",
+    fileUrl: "/uploads/financial-report-2024.pdf",
+    fileName: "financial-report-2024.pdf",
     fileSize: "3.8 MB",
     category: "documents",
     subcategory: "financial-reports"
@@ -367,8 +367,8 @@ const mediaDocuments = [
     title: "CCU Statement of Financial Position 30 June 2024",
     description: "Statement of Financial Position for the Year Ended June 30, 2024",
     date: "2024-06-30",
-    fileUrl: "/uploads/CCU_STATEMENT_OF_FINANCIAL_POSITION_30_JUNE_2024.pdf",
-    fileName: "CCU_STATEMENT_OF_FINANCIAL_POSITION_30_JUNE_2024.pdf",
+    fileUrl: "/uploads/financial-stmt-position-2024.pdf",
+    fileName: "financial-stmt-position-2024.pdf",
     fileSize: "4.8 MB",
     category: "documents",
     subcategory: "financial-reports"
@@ -378,21 +378,21 @@ const mediaDocuments = [
     title: "CCU Statement of Financial Performance 30 June 2024",
     description: "Statement of Financial Performance for the Year Ended June 30, 2024",
     date: "2024-06-30",
-    fileUrl: "/uploads/CCU_STATEMENT_OF_FINANCIAL_PERFORMANCE_30_JUNE_2024.pdf",
-    fileName: "CCU_STATEMENT_OF_FINANCIAL_PERFORMANCE_30_JUNE_2024.pdf",
+    fileUrl: "/uploads/financial-stmt-performance-2024.pdf",
+    fileName: "financial-stmt-performance-2024.pdf",
     fileSize: "3.2 MB",
     category: "documents",
     subcategory: "financial-reports"
   },
 
-  // CONSTITUTION & MANIFESTO (kept as before)
+  // CONSTITUTION & MANIFESTO
   {
     id: "constitution-1",
     title: "CCU Party Constitution 2020",
     description: "Official party constitution document",
     date: "2024-01-01",
-    fileUrl: "/uploads/CCU CONSTITUTION SEPT. 2020.pdf",
-    fileName: "CCU CONSTITUTION SEPT. 2020.pdf",
+    fileUrl: "/uploads/ccu-constitution-sept-2020.pdf",
+    fileName: "ccu-constitution-sept-2020.pdf",
     fileSize: "3.5 MB",
     category: "documents",
     subcategory: "constitution"
@@ -402,35 +402,34 @@ const mediaDocuments = [
     title: "CCU Manifesto",
     description: "Official party manifesto document",
     date: "2024-01-01",
-    fileUrl: "/uploads/CCU MANIFESTO.pdf",
-    fileName: "CCU MANIFESTO.pdf",
+    fileUrl: "/uploads/ccu-manifesto.pdf",
+    fileName: "ccu-manifesto.pdf",
     fileSize: "3.5 MB",
     category: "documents",
     subcategory: "constitution"
   },
 
-  // MEETING NOTICES (kept as before)
+  // MEETING NOTICES
   {
     id: "notice-1",
     title: "NEC Meeting Notice - 10 November 2023",
     description: "Notice of National Executive Committee Meeting on 10th November 2023",
     date: "2023-10-23",
-    fileUrl: "/uploads/NOTICE-OF-A-NEC-MEETING-10-11-2023.pdf",
-    fileName: "NOTICE-OF-A-NEC-MEETING-10-11-2023.pdf",
+    fileUrl: "/uploads/notice-nec-meeting-2023-10-11.pdf",
+    fileName: "notice-nec-meeting-2023-10-11.pdf",
     fileSize: "1.5 MB",
     category: "documents",
     subcategory: "notices"
   },
 
-  // FORMS & APPLICATIONS (kept as before)
-
+  // FORMS & APPLICATIONS
   {
     id: "form-1",
     title: "CU Member Registration Form",
     description: "CU Member Registration Form",
     date: "2024-01-01",
-    fileUrl: "/uploads/CCU Member Registration Form.pdf",
-    fileName: "CCU Member Registration Form.pdf",
+    fileUrl: "/uploads/membership-form.pdf",
+    fileName: "membership-form.pdf",
     fileSize: "2.1 MB",
     category: "documents",
     subcategory: "forms"
@@ -440,8 +439,8 @@ const mediaDocuments = [
     title: "CCU Membership Application Form",
     description: "Official membership application form",
     date: "2024-01-01",
-    fileUrl: "/uploads/CCU_Membership_Form.pdf",
-    fileName: "CCU_Membership_Form.pdf",
+    fileUrl: "/uploads/membership-form.pdf",
+    fileName: "membership-form.pdf",
     fileSize: "1.8 MB",
     category: "documents",
     subcategory: "forms"
